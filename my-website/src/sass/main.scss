@@ -1,0 +1,22 @@
+.App {
+  background: white;
+  .umaru{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+  .umaru:hover{
+    cursor: pointer;
+  }
+  .click{
+    position: absolute;
+    z-index: 1;
+    margin: 2%;
+    color: purple;
+  }
+
+  .click:hover{
+    cursor: pointer;
+  }
+}
