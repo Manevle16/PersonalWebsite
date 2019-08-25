@@ -1,13 +1,17 @@
 import React from 'react';
+import store from './store';
+import { Provider } from 'react-redux';
 import './sass/main.scss';
-import Video from './components/video';
+import Video from './widgets/components/video';
 
 function App() {
-    document.body.style.backgroundColor = "white";
+  document.body.style.backgroundColor = 'white';
   return (
-    <div className="App">
+    <Provider store={store}>
+      <div className="App">
         <Video />
-    </div>
+      </div>
+    </Provider>
   );
 }
 
