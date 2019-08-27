@@ -2,17 +2,17 @@ import React from 'react';
 import store from './store';
 import { Provider } from 'react-redux';
 import './sass/main.scss';
-import Video from './widgets/components/video';
+import TopMenuBarWidget from './widgets/TopMenuBar/TopMenuBarWidget';
 
-function App() {
+function Website() {
   document.body.style.backgroundColor = 'white';
   return (
     <Provider store={store}>
-      <div className="App">
-        <Video />
+      <div className="website">
+        <TopMenuBarWidget />
       </div>
     </Provider>
   );
 }
 
-export default App;
+export default Website;

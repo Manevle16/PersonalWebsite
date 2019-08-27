@@ -1,0 +1,14 @@
+.top-menu-bar{
+  .navbar{
+
+    padding: size('md');
+    border: 2px solid black;
+    margin: size('sm');
+    .navbar-nav{
+      flex-direction: row;
+      justify-content: flex-start;
+      display: flex;
+    }
+    
+  }
+}

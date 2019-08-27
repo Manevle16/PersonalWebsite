@@ -1,0 +1,16 @@
+@function size($size){
+  @if $size == 'xs' {
+    @return 4px;
+  } @else if $size == 'sm' {
+    @return 8px;
+  } @else if $size == 'md' {
+    @return 16px;
+  } @else if $size == 'lg' {
+    @return 24px;
+  } @else if $size == 'xl' {
+    @return 40px;
+  } @else {
+    @warn "not a size";
+    @return 0;
+  }
+}
