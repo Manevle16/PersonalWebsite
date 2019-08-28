@@ -1,17 +1,23 @@
 import React from "react";
-import {Navbar, Nav, Row, Col, Container} from "react-bootstrap";
+import {Navbar, Nav } from "react-bootstrap";
 
 export default class TopMenuBar extends React.Component{
     render() {
         return(
             <Navbar expand="lg">
-            <Navbar.Collapse>
-            <Nav>
-                <Nav.Link >Test</Nav.Link>
-                <Nav.Link >Test 2</Nav.Link>
-            </Nav>
-            </Navbar.Collapse>
-
+                <Navbar.Brand>
+                    Home
+                </Navbar.Brand>
+                <Navbar.Collapse>
+                    <Nav variant="tabs" defaultActiveKey="Test">
+                        <Nav.Item>
+                            <Nav.Link eventKey="Test">Test</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link eventKey="Test2" >Test 2</Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                </Navbar.Collapse>
             </Navbar>
         )
     }

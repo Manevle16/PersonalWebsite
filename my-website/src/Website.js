@@ -5,7 +5,7 @@ import './sass/main.scss';
 import TopMenuBarWidget from './widgets/TopMenuBar/TopMenuBarWidget';
 
 function Website() {
-  document.body.style.backgroundColor = 'white';
+  document.body.style.backgroundColor = 'ghostwhite';
   return (
     <Provider store={store}>
       <div className="website">
