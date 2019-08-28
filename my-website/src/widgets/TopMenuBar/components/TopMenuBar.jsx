@@ -4,7 +4,6 @@ import { Navbar, Nav } from 'react-bootstrap';
 export default class TopMenuBar extends React.Component {
   onTabClick = eventKey => {
     const { switchTabHome, switchTabAbout } = this.props;
-
     switch (eventKey) {
       case 'home':
         return switchTabHome();
@@ -17,7 +16,6 @@ export default class TopMenuBar extends React.Component {
 
   render() {
     const { currentTab } = this.props;
-    console.log(currentTab);
     return (
       <div className="top-menu-bar">
         <Navbar expand="lg">

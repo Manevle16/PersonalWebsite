@@ -1,6 +1,6 @@
-import { combineReducers } from "redux";
-import topMenuBarReducer from "./topMenuBarReducer";
-import { createSelector } from "reselect";
+import { combineReducers } from 'redux';
+import topMenuBarReducer from './topMenuBarReducer';
+import { createSelector } from 'reselect';
 
 export default combineReducers({
   topMenuBar: topMenuBarReducer
