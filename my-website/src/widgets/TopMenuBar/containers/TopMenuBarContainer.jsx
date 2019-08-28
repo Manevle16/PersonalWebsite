@@ -1,10 +1,18 @@
-import React from "react";
+import { connect } from 'react-redux';
 import TopMenuBar from '../components/TopMenuBar';
-export default class TopMenuBarContainer extends React.Component{
+import { getCurrentTab } from '../../../reducers';
+import { switchTabHome, switchTabAbout } from '../../../actions/topMenuBarActions';
 
-    render(){
-        return(
-            <TopMenuBar />
-        )
-    }
-}
+const mapStateToProps = state => ({
+  currentTab: getCurrentTab(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  switchTabHome: () => dispatch(switchTabHome),
+  switchTabAbout: () => dispatch(switchTabAbout)
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TopMenuBar);

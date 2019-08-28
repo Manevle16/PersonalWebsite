@@ -1,0 +1,2 @@
+export const SWITCH_TAB_HOME = 'SWITCH_TAB_HOME';
+export const SWITCH_TAB_ABOUT = 'SWITCH_TAB_ABOUT';

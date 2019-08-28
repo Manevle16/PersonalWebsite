@@ -1,4 +1,4 @@
-@function size($size){
+@function size($size) {
   @if $size == 'xs' {
     @return 4px;
   } @else if $size == 'sm' {

@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         singleQuote: true
       },
       files: {
-        src: ['src/**.*']
+        src: ['*.js', 'src/**/*.*']
       }
     },
     eslint: {

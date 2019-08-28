@@ -1,6 +1,5 @@
-
-.top-menu-bar{
-  .navbar{
+.top-menu-bar {
+  .navbar {
     background: grey;
     padding: size('md');
     border: 2px solid black;
@@ -10,17 +9,17 @@
     justify-content: space-between;
     font-family: 'Bree Serif', serif;
 
-    .navbar-nav{
+    .navbar-nav {
       flex-direction: row;
       display: flex;
     }
 
-    .nav-link{
+    .nav-link {
       padding: 0 size('md');
       text-decoration: none;
       color: ghostwhite;
 
-      &.active{
+      &.active {
         border: 2px solid black;
         border-bottom: 2px solid ghostwhite;
         border-radius: 25% 25% 0 0;

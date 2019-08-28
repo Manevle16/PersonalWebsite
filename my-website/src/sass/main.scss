@@ -1,29 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
-@import "./variables";
+@import './variables';
 
 .website {
+  @import './widgets/top-menu-bar';
 
-  @import "./widgets/top-menu-bar";
-
-  .umaru{
+  .umaru {
     position: absolute;
     height: 100%;
     width: 100%;
     z-index: -1;
   }
-  .umaru:hover{
+  .umaru:hover {
     cursor: pointer;
   }
-  .click{
+  .click {
     position: absolute;
     z-index: 1;
     margin: 2%;
     color: purple;
   }
 
-  .click:hover{
+  .click:hover {
     cursor: pointer;
   }
-
-
 }

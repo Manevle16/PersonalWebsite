@@ -1,0 +1,18 @@
+import {
+  SWITCH_TAB_HOME,
+  SWITCH_TAB_ABOUT
+} from './actionTypes/topMenuBarActionTypes';
+
+export const switchTabHome = () => {
+  return {
+    action: SWITCH_TAB_HOME,
+    payload: 'home'
+  };
+};
+
+export const switchTabAbout = () => {
+  return {
+    action: SWITCH_TAB_ABOUT,
+    payload: 'about'
+  };
+};
