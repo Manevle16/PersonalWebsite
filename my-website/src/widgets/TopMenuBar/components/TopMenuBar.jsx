@@ -2,8 +2,18 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 
 export default class TopMenuBar extends React.Component {
+  componentDidMount() {
+    const { currentPath, switchTabAbout } = this.props;
+    // eslint-disable-next-line
+    switch (currentPath) {
+      case '/about':
+        return switchTabAbout();
+    }
+  }
+
   onTabClick = eventKey => {
     const { switchTabHome, switchTabAbout } = this.props;
+    // eslint-disable-next-line
     switch (eventKey) {
       case 'home':
         return switchTabHome();
@@ -25,12 +35,16 @@ export default class TopMenuBar extends React.Component {
               activeKey={currentTab}
             >
               <Nav.Item>
-                <Nav.Link data-id='TOP_MENU_HOME_BTN' eventKey='home'>
+                <Nav.Link href='/' data-id='TOP_MENU_HOME_BTN' eventKey='home'>
                   Home
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link data-id='TOP_MENU_ABOUT_BTN' eventKey='about'>
+                <Nav.Link
+                  href='/about'
+                  data-id='TOP_MENU_ABOUT_BTN'
+                  eventKey='about'
+                >
                   About
                 </Nav.Link>
               </Nav.Item>

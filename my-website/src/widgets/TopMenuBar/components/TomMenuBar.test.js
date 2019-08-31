@@ -6,6 +6,7 @@ import TopMenuBar from './TopMenuBar';
 
 const DEFAULT_PROPS = {
   currentTab: 'home',
+  currentPath: '/',
   switchTabHome: noop,
   switchTabAbout: noop
 };
@@ -24,17 +25,24 @@ describe('<TopMenuBar />', () => {
     renderWithProps();
   });
 
-  it('should call switchTabHome', () => {
+  it('should call switchTabHome when home tab clicked', () => {
     const switchTabHome = spy();
     const { getLinkByDataId } = renderWithProps({ switchTabHome });
     getLinkByDataId('TOP_MENU_HOME_BTN').simulate('click');
     expect(switchTabHome.called).toEqual(true);
   });
 
-  it('should call switchTabAbout', () => {
+  it('should call switchTabAbout when about tab clicked', () => {
     const switchTabAbout = spy();
     const { getLinkByDataId } = renderWithProps({ switchTabAbout });
     getLinkByDataId('TOP_MENU_ABOUT_BTN').simulate('click');
     expect(switchTabAbout.called).toEqual(true);
+  });
+
+  it('should set currentTab to about on mount', () => {
+    const { container } = renderWithProps({ currentPath: '/about' });
+    setTimeout(() => {
+      expect(container.prop('currentTab')).toEqual('about');
+    }, 0);
   });
 });
