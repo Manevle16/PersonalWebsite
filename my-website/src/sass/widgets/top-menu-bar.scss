@@ -1,13 +1,12 @@
 .top-menu-bar {
   .navbar {
-    background: grey;
+    background: darksalmon;
     padding: size('md');
-    border: 2px solid black;
-    margin: size('sm');
+    border-bottom: 2px solid black;
     flex-direction: row;
     display: flex;
     justify-content: space-between;
-    font-family: 'Bree Serif', serif;
+    font-family: 'Kadwa', serif;
 
     .navbar-nav {
       flex-direction: row;
@@ -17,16 +16,12 @@
     .nav-link {
       padding: 0 size('md');
       text-decoration: none;
-      color: ghostwhite;
+      color: gainsboro;
 
       &.active {
-        border: 2px solid black;
-        border-bottom: 2px solid ghostwhite;
-        border-radius: 25% 25% 0 0;
-        padding: size('xs') size('md') size('md');
-        background: ghostwhite;
-        box-sizing: border-box;
-        color: black;
+        border-bottom: 4px solid white;
+        padding-bottom: size('md') - 4;
+        color: white;
       }
 
       &:focus {

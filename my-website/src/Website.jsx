@@ -9,11 +9,11 @@ export default class Website extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <div className='website'>
+        <div className="website">
           <TopMenuBarWidgetContainer currentPath={window.location.pathname} />
           <Router>
-            <Route exact path='/' />
-            <Route path='/about' />
+            <Route exact path="/" />
+            <Route path="/about" />
           </Router>
         </div>
       </Provider>

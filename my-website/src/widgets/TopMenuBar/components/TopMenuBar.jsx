@@ -25,25 +25,25 @@ export default class TopMenuBar extends React.Component {
   render() {
     const { currentTab } = this.props;
     return (
-      <div className='top-menu-bar'>
-        <Navbar expand='lg'>
+      <div className="top-menu-bar">
+        <Navbar expand="lg">
           <Navbar.Brand>MN</Navbar.Brand>
           <Navbar.Collapse>
             <Nav
               onSelect={this.onTabClick}
-              variant='tabs'
+              variant="tabs"
               activeKey={currentTab}
             >
               <Nav.Item>
-                <Nav.Link href='/' data-id='TOP_MENU_HOME_BTN' eventKey='home'>
+                <Nav.Link href="/" data-id="TOP_MENU_HOME_BTN" eventKey="home">
                   Home
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link
-                  href='/about'
-                  data-id='TOP_MENU_ABOUT_BTN'
-                  eventKey='about'
+                  href="/about"
+                  data-id="TOP_MENU_ABOUT_BTN"
+                  eventKey="about"
                 >
                   About
                 </Nav.Link>

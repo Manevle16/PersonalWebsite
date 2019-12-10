@@ -21,9 +21,13 @@ module.exports = function(grunt) {
       },
       npm_start: {
         exec: 'npm run start'
+      },
+      npm_test_jest: {
+        exec: 'npm run test' // <-- use the exec key.
       }
     }
   });
 
   grunt.registerTask('default', ['prettier', 'eslint', 'run:npm_start']);
+  grunt.registerTask('test', ['run:npm_test_jest']);
 };
