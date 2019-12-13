@@ -3,7 +3,9 @@ import TopMenuBar from '../components/TopMenuBar';
 import { getCurrentTab } from '../../../reducers';
 import {
   switchTabHome,
-  switchTabAbout
+  switchTabAbout,
+  switchTabProject,
+  switchTabBlog
 } from '../../../actions/topMenuBarActions';
 
 const mapStateToProps = state => ({
@@ -12,7 +14,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   switchTabHome: () => dispatch(switchTabHome()),
-  switchTabAbout: () => dispatch(switchTabAbout())
+  switchTabAbout: () => dispatch(switchTabAbout()),
+  switchTabProject: () => dispatch(switchTabProject()),
+  switchTabBlog: () => dispatch(switchTabBlog())
 });
 
 export default connect(

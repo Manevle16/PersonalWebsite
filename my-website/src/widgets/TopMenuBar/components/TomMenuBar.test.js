@@ -8,7 +8,9 @@ const DEFAULT_PROPS = {
   currentTab: 'home',
   currentPath: '/',
   switchTabHome: noop,
-  switchTabAbout: noop
+  switchTabAbout: noop,
+  switchTabProject: noop,
+  switchTabBlog: noop
 };
 
 describe('<TopMenuBar />', () => {
@@ -25,6 +27,7 @@ describe('<TopMenuBar />', () => {
     renderWithProps();
   });
 
+  //Test clicking of tabs
   it('should call switchTabHome when home tab clicked', () => {
     const switchTabHome = spy();
     const { getLinkByDataId } = renderWithProps({ switchTabHome });
@@ -37,6 +40,20 @@ describe('<TopMenuBar />', () => {
     const { getLinkByDataId } = renderWithProps({ switchTabAbout });
     getLinkByDataId('TOP_MENU_ABOUT_BTN').simulate('click');
     expect(switchTabAbout.called).toEqual(true);
+  });
+
+  it('should call switchTabProject when about tab clicked', () => {
+    const switchTabProject = spy();
+    const { getLinkByDataId } = renderWithProps({ switchTabProject });
+    getLinkByDataId('TOP_MENU_PROJECT_BTN').simulate('click');
+    expect(switchTabProject.called).toEqual(true);
+  });
+
+  it('should call switchTabBlog when about tab clicked', () => {
+    const switchTabBlog = spy();
+    const { getLinkByDataId } = renderWithProps({ switchTabBlog });
+    getLinkByDataId('TOP_MENU_BLOG_BTN').simulate('click');
+    expect(switchTabBlog.called).toEqual(true);
   });
 
   it('should set currentTab to about on mount', () => {

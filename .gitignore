@@ -1,1 +1,5 @@
 .vscode/
+
+//Website Server
+website-server/Utils/config.js
+website-server/node_modules/
