@@ -19,6 +19,15 @@ module.exports = (function() {
           callback(err, res);
         }
       );
+    },
+    isEmailUnique: (email, callback) => {
+      return connection.query(
+        'SELECT * FROM User WHERE email = ?',
+        [email],
+        (err, res) => {
+          callback(err, res);
+        }
+      );
     }
   };
 })();

@@ -16,13 +16,13 @@ export default class Website extends React.Component {
     console.log(this.state);
     return (
       <Provider store={store}>
-        <div className='website'>
+        <div className="website">
           <TopMenuBarWidgetContainer currentPath={this.state.currentPath} />
           <Router>
-            <Route exact path='/' />
-            <Route path='/projects' />
-            <Route path='/blog' />
-            <Route path='/about' />
+            <Route exact path="/" />
+            <Route path="/projects" />
+            <Route path="/blog" />
+            <Route path="/about" />
           </Router>
         </div>
       </Provider>
