@@ -1,31 +1,69 @@
 .top-menu-bar {
+  height: 4rem;
+
+  .navbar-brand {
+    padding: 0;
+  }
   .navbar {
-    background: darksalmon;
-    padding: size('md');
-    border-bottom: 2px solid black;
-    flex-direction: row;
-    display: flex;
-    justify-content: space-between;
+    background: color('pink1');
+    padding: 0 size('md');
+    box-shadow: inset black 0 -2px 0;
     font-family: 'Kadwa', serif;
 
     .navbar-nav {
-      flex-direction: row;
-      display: flex;
+      border: 0;
+      padding-top: 1.4rem;
+
+      :last-child {
+        margin-bottom: 0;
+      }
     }
 
     .nav-link {
+      border: 0;
       padding: 0 size('md');
       text-decoration: none;
-      color: gainsboro;
+      color: black;
 
       &.active {
-        border-bottom: 4px solid white;
-        padding-bottom: size('md') - 4;
+        border: 0;
+        box-shadow: inset 0 -3px 0#fff;
+        margin-bottom: 3px;
+        padding-bottom: 1rem;
         color: white;
+        background: inherit;
       }
 
       &:focus {
         outline: none;
+      }
+    }
+    .dropdown {
+      height: 100%;
+
+      .nav-link {
+        background-color: inherit;
+      }
+
+      .dropdown-menu {
+        background-color: color('pink1');
+        margin-top: -2px;
+        border: 2px solid black;
+        border-top: none;
+        min-width: 100%;
+
+        .dropdown-item {
+          color: black;
+          padding-left: 15px;
+
+          &:hover {
+            background-color: lighten(color('pink1'), 5%);
+          }
+        }
+      }
+
+      .dropdown-toggle[aria-expanded='true'] {
+        color: white;
       }
     }
   }
