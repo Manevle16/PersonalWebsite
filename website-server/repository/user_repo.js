@@ -28,6 +28,15 @@ module.exports = (function() {
           callback(err, res);
         }
       );
+    },
+    loginUser: (username, password, callback) => {
+      return connection.query(
+        'SELECT * FROM User WHERE username =? and password = ?',
+        [username, password],
+        (err, res) => {
+          callback(err, res);
+        }
+      );
     }
   };
 })();

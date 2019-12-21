@@ -49,44 +49,44 @@ export default class TopMenuBar extends React.Component {
     const { currentTab } = this.props;
     console.log(currentTab);
     return (
-      <div className='top-menu-bar'>
-        <Navbar expand='sm'>
+      <div className="top-menu-bar">
+        <Navbar expand="sm">
           <Navbar.Brand>MN</Navbar.Brand>
-          <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-          <Navbar.Collapse className='justify-content-end'>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse className="justify-content-end">
             <Nav
               onSelect={this.onTabClick}
-              variant='tabs'
+              variant="tabs"
               activeKey={currentTab}
             >
               <Nav.Item>
-                <Nav.Link href='/' data-id='TOP_MENU_HOME_BTN' eventKey='home'>
+                <Nav.Link href="/" data-id="TOP_MENU_HOME_BTN" eventKey="home">
                   Home
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link
-                  href='/projects'
-                  data-id='TOP_MENU_PROJECT_BTN'
-                  eventKey='project'
+                  href="/projects"
+                  data-id="TOP_MENU_PROJECT_BTN"
+                  eventKey="project"
                 >
                   Projects
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link
-                  href='/blog'
-                  data-id='TOP_MENU_BLOG_BTN'
-                  eventKey='blog'
+                  href="/blog"
+                  data-id="TOP_MENU_BLOG_BTN"
+                  eventKey="blog"
                 >
                   Blog
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link
-                  href='/about'
-                  data-id='TOP_MENU_ABOUT_BTN'
-                  eventKey='about'
+                  href="/about"
+                  data-id="TOP_MENU_ABOUT_BTN"
+                  eventKey="about"
                 >
                   About
                 </Nav.Link>

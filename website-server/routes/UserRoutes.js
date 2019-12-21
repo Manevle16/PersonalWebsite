@@ -1,5 +1,7 @@
 let express = require('express');
+let crypto = require('crypto');
 let userRepo = require('../repository/user_repo.js');
+let userTokenMapRepo = require('../repository/userId_token_map_repo.js');
 
 module.exports = function() {
   let userRoutes = express.Router();
@@ -18,7 +20,6 @@ module.exports = function() {
     } else {
       userRepo.isEmailAndUsernameUnique(email, username, (err, body) => {
         if (err) {
-          console.log(err);
           res
             .status(500)
             .send(JSON.stringify({ message: 'Server error occurred' }));
@@ -29,13 +30,10 @@ module.exports = function() {
             })
           );
         } else {
-          let date = new Date();
-          let timestamp = `${date.getFullYear}-${date.getMonth() +
-            1}-${date.getDate()} ${date.getHours()}:${date.getSeconds()}`;
+          let timestamp = getCurrentTimestamp();
 
           userRepo.addUser(email, username, password, timestamp, err => {
             if (err) {
-              console.log(err);
               res
                 .status(500)
                 .send(JSON.stringify({ message: 'Server error occurred' }));
@@ -62,12 +60,53 @@ module.exports = function() {
     } else {
       userRepo.isEmailUnique(email, (err, body) => {
         if (err) {
-          console.log(err);
-          res.status(400).send(JSON.stringify({ message: 'Server error' }));
+          res
+            .status(500)
+            .send(JSON.stringify({ message: 'Server error occured' }));
         } else if (body.length > 0) {
           res.status(200).send(JSON.stringify({ message: false }));
         } else {
           res.status(200).send(JSON.stringify({ message: true }));
+        }
+      });
+    }
+  });
+
+  userRoutes.route('/login').get((req, res) => {
+    const { username, password } = req.query;
+
+    if (typeof username != 'string' || username.length > 45) {
+      res.status(400).send({ message: 'Username is too long' });
+    } else if (typeof password != 'string' || password.length > 45) {
+      res.status(400).send({ message: 'Password is too long' });
+    } else {
+      userRepo.loginUser(username, password, (err, body) => {
+        if (err) {
+          res
+            .status(500)
+            .send(JSON.stringify({ message: 'Server error occured' }));
+        } else if (body.length !== 1) {
+          res
+            .status(401)
+            .send(JSON.stringify({ message: 'Wrong username or password' }));
+        } else {
+          let token = genHashToken();
+          let timestamp = getCurrentTimestamp();
+          userTokenMapRepo.addUserTokenMap(
+            body[0].id,
+            token,
+            timestamp,
+            err => {
+              if (err) {
+                console.log(err);
+                res
+                  .status(500)
+                  .send(JSON.stringify({ message: 'Server error occured' }));
+              } else {
+                res.status(200).send(JSON.stringify({ token }));
+              }
+            }
+          );
         }
       });
     }
@@ -79,4 +118,17 @@ module.exports = function() {
 function validateEmail(email) {
   let re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
   return re.test(email);
+}
+
+function genHashToken() {
+  let salt = crypto.randomBytes(Math.ceil(8)).toString('hex');
+  let hash = crypto.createHmac('sha256', salt);
+  let value = hash.digest().toString('base64');
+  return value;
+}
+
+function getCurrentTimestamp() {
+  let date = new Date();
+  return `${date.getFullYear()}-${date.getMonth() +
+    1}-${date.getDate()} ${date.getHours()}:${date.getSeconds()}`;
 }

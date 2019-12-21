@@ -2,6 +2,7 @@ import React from 'react';
 import store from './store';
 import { Provider } from 'react-redux';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
+import cookie from 'react-cookies';
 import './sass/main.scss';
 import TopMenuBarWidgetContainer from './widgets/TopMenuBar/containers/TopMenuBarContainer';
 
@@ -12,17 +13,25 @@ export default class Website extends React.Component {
       currentPath: window.location.pathname
     };
   }
+
+  componentDidMount() {
+    this.setState({
+      userId: cookie.load('userId'),
+      token: cookie.load('token')
+    });
+  }
+
   render() {
     console.log(this.state);
     return (
       <Provider store={store}>
-        <div className="website">
+        <div className='website'>
           <TopMenuBarWidgetContainer currentPath={this.state.currentPath} />
           <Router>
-            <Route exact path="/" />
-            <Route path="/projects" />
-            <Route path="/blog" />
-            <Route path="/about" />
+            <Route exact path='/' />
+            <Route path='/projects' />
+            <Route path='/blog' />
+            <Route path='/about' />
           </Router>
         </div>
       </Provider>
