@@ -1,10 +1,21 @@
-let express = require('express');
-let bodyParser = require('body-parser');
+const express = require('express');
+const https = require('https');
+const fs = require('fs');
+const bodyParser = require('body-parser');
 
-let app = express();
+const app = express();
 let port = process.env.PORT || 3000;
 
+//Routers
 let userRouter = require('./routes/UserRoutes');
+
+//Setup for https
+let key = fs.readFileSync('./certs/domain.key');
+let cert = fs.readFileSync('./certs/domain.crt');
+let options = {
+  key,
+  cert
+};
 
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
@@ -24,9 +35,12 @@ app.use(function(req, res, next) {
 
 app.use('/users', userRouter());
 
-app.listen(port, function() {
-  console.log('Running  on port ' + port);
-});
 app.get('/', function(req, res) {
   res.send('Hello World!');
+});
+
+let server = https.createServer(options, app);
+
+server.listen(port, function() {
+  console.log('Running  on port ' + port);
 });
