@@ -1,0 +1,9 @@
+.bs-tooltip-top {
+  .arrow::before {
+    border-top-color: color('warning');
+  }
+  .tooltip-inner {
+    background-color: color('warning');
+    color: white;
+  }
+}

@@ -10,7 +10,6 @@ const initialState = {
 };
 
 export default (state = initialState, { type, payload }) => {
-  console.log(payload);
   switch (type) {
     case SWITCH_TAB_ABOUT:
     case SWITCH_TAB_HOME:

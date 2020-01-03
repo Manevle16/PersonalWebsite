@@ -6,7 +6,7 @@ let userTokenMapRepo = require('../repository/userId_token_map_repo.js');
 module.exports = function() {
   let userRoutes = express.Router();
 
-  userRoutes.route('/addUser').get((req, res) => {
+  userRoutes.route('/addUser').post((req, res) => {
     const { email, username, password } = req.query;
 
     if (typeof email != 'string' || email.length > 325) {
@@ -32,15 +32,45 @@ module.exports = function() {
         } else {
           let timestamp = getCurrentTimestamp();
 
-          userRepo.addUser(email, username, password, timestamp, err => {
-            if (err) {
-              res
-                .status(500)
-                .send(JSON.stringify({ message: 'Server error occurred' }));
-            } else {
-              res.status(200).send(JSON.stringify({ message: 'User added' }));
+          userRepo.addUser(
+            email,
+            username,
+            password,
+            timestamp,
+            (err, body) => {
+              if (err) {
+                res
+                  .status(500)
+                  .send(JSON.stringify({ message: 'Server error occurred' }));
+              } else {
+                console.log(body);
+                let token = genHashToken();
+                userTokenMapRepo.addUserTokenMap(
+                  body.insertId,
+                  token,
+                  timestamp,
+                  err => {
+                    if (err) {
+                      userRepo.deleteUser(username);
+                      res
+                        .status(500)
+                        .send(
+                          JSON.stringify({ message: 'Server error occured' })
+                        );
+                    } else {
+                      res.status(200).send(
+                        JSON.stringify({
+                          message: 'User added',
+                          token,
+                          userId: body.insertId
+                        })
+                      );
+                    }
+                  }
+                );
+              }
             }
-          });
+          );
         }
       });
     }
@@ -98,15 +128,43 @@ module.exports = function() {
             timestamp,
             err => {
               if (err) {
-                console.log(err);
                 res
                   .status(500)
                   .send(JSON.stringify({ message: 'Server error occured' }));
               } else {
-                res.status(200).send(JSON.stringify({ token }));
+                res
+                  .status(200)
+                  .send(JSON.stringify({ token, userId: body[0].id }));
               }
             }
           );
+        }
+      });
+    }
+  });
+
+  userRoutes.route('/isLoggedIn').get((req, res) => {
+    const { userId, token } = req.query;
+    if (!userId || !token) {
+      res.status(400).send(JSON.stringify({ message: 'parameter missing' }));
+    } else {
+      console.log(userId);
+      console.log(token);
+      userTokenMapRepo.isUserLoggedIn(userId, token, (err, body) => {
+        if (err) {
+          res
+            .status(500)
+            .send(JSON.stringify({ message: 'Server error occured' }));
+        } else {
+          if (body.length != 1) {
+            res
+              .status(401)
+              .send(JSON.stringify({ message: 'Incorrect parameters given' }));
+          } else {
+            res
+              .status(200)
+              .send(JSON.stringify({ message: 'User is logged in' }));
+          }
         }
       });
     }

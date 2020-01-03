@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import Dropdown from '../../LoginDropdown/containers/LoginDropdownContainer';
+import Dropdown from '../../AccountDropdown/containers/AccountDropdownContainer';
 
 export default class TopMenuBar extends React.Component {
   componentDidMount() {

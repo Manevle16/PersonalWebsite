@@ -18,7 +18,17 @@
 @function color($color) {
   @if $color == 'pink1' {
     @return #fcbacb;
-  } @else if $color == 'blue1' {
-    @return #bafceb;
+  } @else if $color == 'peach1' {
+    @return #ffd2bc;
+  } @else if $color == 'peach2' {
+    @return #ffa174;
+  } @else if $color == 'peach3' {
+    @return #ffede5;
+  } @else if $color == 'green1' {
+    @return #b4f4dd;
+  } @else if $color == 'gray1' {
+    @return #c4c4cf;
+  } @else if $color == 'warning' {
+    @return #dc3545;
   }
 }

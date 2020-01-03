@@ -1,5 +1,6 @@
 const express = require('express');
 const https = require('https');
+const http = require('http');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 
@@ -39,8 +40,11 @@ app.get('/', function(req, res) {
   res.send('Hello World!');
 });
 
-let server = https.createServer(options, app);
+let httpsServer = https.createServer(options, app);
+let httpServer = http.createServer(app);
 
-server.listen(port, function() {
+httpsServer.listen(port, function() {
   console.log('Running  on port ' + port);
 });
+
+httpServer.listen(3003);

@@ -10,6 +10,15 @@ module.exports = (function() {
           callback(err);
         }
       );
+    },
+    isUserLoggedIn: (userId, token, callback) => {
+      return connection.query(
+        'SELECT * FROM UserId_token_map WHERE userId = ? AND token = ?',
+        [userId, token],
+        (err, res) => {
+          callback(err, res);
+        }
+      );
     }
   };
 })();

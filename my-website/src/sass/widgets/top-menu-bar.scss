@@ -33,37 +33,40 @@
         color: white;
         background: inherit;
       }
-
       &:focus {
         outline: none;
       }
     }
-    .dropdown {
+    .account-dropdown {
       height: 100%;
 
-      .nav-link {
-        background-color: inherit;
-      }
+      .dropdown {
+        height: inherit;
 
-      .dropdown-menu {
-        background-color: color('pink1');
-        margin-top: -2px;
-        border: 2px solid black;
-        border-top: none;
-        min-width: 100%;
+        .nav-link {
+          background-color: inherit;
+        }
 
-        .dropdown-item {
-          color: black;
-          padding-left: 15px;
+        .dropdown-menu {
+          background-color: color('pink1');
+          margin-top: -2px;
+          border: 2px solid black;
+          border-top: none;
+          min-width: 100%;
 
-          &:hover {
-            background-color: lighten(color('pink1'), 5%);
+          .dropdown-item {
+            color: black;
+            padding-left: 15px;
+
+            &:hover {
+              background-color: lighten(color('pink1'), 5%);
+            }
           }
         }
-      }
 
-      .dropdown-toggle[aria-expanded='true'] {
-        color: white;
+        .dropdown-toggle[aria-expanded='true'] {
+          color: white;
+        }
       }
     }
   }

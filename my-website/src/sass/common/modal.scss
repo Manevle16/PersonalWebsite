@@ -1,0 +1,83 @@
+.modal {
+  font-family: 'Kadwa', serif;
+
+  .modal-content {
+    background-color: color('peach1');
+
+    .modal-header {
+      border-bottom: unset;
+    }
+    .modal-body {
+      padding-top: 0;
+      font-size: 0.8rem;
+    }
+
+    form {
+      .form-group {
+        overflow: hidden;
+        margin-left: size('md');
+        margin-bottom: 0;
+        min-height: 55px;
+
+        label {
+          margin-right: size('sm');
+          margin-bottom: 0;
+          vertical-align: text-bottom;
+        }
+
+        @media only screen and (min-width: 1000px) {
+          label {
+            width: 30%;
+          }
+        }
+
+        @media only screen and (max-width: 1000px) {
+          label {
+            width: 20%;
+          }
+        }
+
+        input {
+          float: right;
+          margin-right: size('xl');
+          width: 60%;
+
+          &.field-error {
+            border-color: color('warning');
+            border-width: 3px;
+            border-style: solid;
+          }
+        }
+
+        .error {
+          margin-right: size('xl');
+          color: color('warning');
+          float: right;
+          clear: right;
+        }
+      }
+    }
+
+    .modal-footer {
+      background-color: color('peach2');
+      border-top: unset;
+      justify-content: space-between;
+
+      .btn {
+        box-shadow: 3px 2px 5px grey;
+      }
+
+      .btn-secondary {
+        background-color: color('gray1');
+        border-color: color('gray1');
+        color: black;
+      }
+
+      .btn-primary {
+        background-color: color('green1');
+        border-color: color('green1');
+        color: black;
+      }
+    }
+  }
+}

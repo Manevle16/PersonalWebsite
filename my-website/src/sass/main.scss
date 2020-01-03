@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Kadwa&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Kadwa&display=block');
 @import './variables';
+@import './common/modal.scss';
+@import './common/tooltip.scss';
 
 .website {
   @import './widgets/top-menu-bar';
@@ -19,7 +21,6 @@
     margin: 2%;
     color: purple;
   }
-
   .click:hover {
     cursor: pointer;
   }
