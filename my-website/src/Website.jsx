@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import './sass/main.scss';
 import TopMenuBarWidgetContainer from './widgets/TopMenuBar/containers/TopMenuBarContainer';
+import UnderConstruction from './widgets/Common/UnderConstruction/UnderConstruction';
 
 export default class Website extends React.Component {
   constructor() {
@@ -16,13 +17,21 @@ export default class Website extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="website">
+        <div className='website'>
           <TopMenuBarWidgetContainer currentPath={this.state.currentPath} />
           <Router>
-            <Route exact path="/" />
-            <Route path="/projects" />
-            <Route path="/blog" />
-            <Route path="/about" />
+            <Route exact path='/'>
+              <UnderConstruction />
+            </Route>
+            <Route path='/projects'>
+              <UnderConstruction />
+            </Route>
+            <Route path='/blog'>
+              <UnderConstruction />
+            </Route>
+            <Route path='/about'>
+              <UnderConstruction />
+            </Route>
           </Router>
         </div>
       </Provider>

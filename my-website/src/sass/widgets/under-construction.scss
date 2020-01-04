@@ -1,0 +1,30 @@
+.under-construction {
+  height: 100%;
+  background-color: color('peach1');
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .warning-image {
+    display: flex;
+
+    @media only screen and (min-width: 1000px) {
+      width: 30%;
+    }
+
+    @media only screen and (max-width: 1000px) {
+      width: 100%;
+    }
+  }
+
+  label {
+    display: flex;
+    margin: 16px;
+    font-family: 'Kadwa', serif;
+    background-color: color('warning');
+    color: white;
+    border: black dotted;
+    padding: 8px;
+    border-radius: 1rem;
+  }
+}

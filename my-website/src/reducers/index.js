@@ -12,7 +12,10 @@ export default combineReducers({
 
 //Config Selectors
 export const getConfig = () => config;
-export const getHostName = createSelector(getConfig, config => config.hostName);
+export const getHostName = createSelector(
+  getConfig,
+  config => config.hostName
+);
 
 //TopMenuBar Selectors
 export const getTopMenuBar = state => state.topMenuBar;

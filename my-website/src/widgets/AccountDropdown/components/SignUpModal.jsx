@@ -1,11 +1,8 @@
-import React, { createRef } from 'react';
-import { Modal, Button, Overlay, Tooltip } from 'react-bootstrap';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import React from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import { Formik, Form, Field } from 'formik';
 
 export default class SignUpModal extends React.Component {
-  constructor() {
-    super();
-  }
   render() {
     const { show, handleClose, signUpUser } = this.props;
 
@@ -51,7 +48,7 @@ export default class SignUpModal extends React.Component {
             }
             if (!values.passVerify) {
               errors.passVerify = 'Required';
-            } else if (values.passVerify != values.password) {
+            } else if (values.passVerify !== values.password) {
               errors.passVerify = 'Not same as password';
             }
             return errors;

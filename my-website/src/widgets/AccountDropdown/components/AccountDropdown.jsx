@@ -31,11 +31,11 @@ export default class extends React.Component {
   render() {
     const { isLoggedIn } = this.props;
     return (
-      <div className='account-dropdown'>
+      <div className="account-dropdown">
         {isLoggedIn ? (
-          <NavDropdown title='Account' id='account_dropdown'>
-            <NavDropdown.Item href='#fake1'>Settings</NavDropdown.Item>
-            <NavDropdown.Item href='#fake2'>Logout</NavDropdown.Item>
+          <NavDropdown title="Account" id="account_dropdown">
+            <NavDropdown.Item href="#fake1">Settings</NavDropdown.Item>
+            <NavDropdown.Item href="#fake2">Logout</NavDropdown.Item>
           </NavDropdown>
         ) : (
           <Nav.Link onClick={this.onClickSignIn}> Sign In </Nav.Link>
