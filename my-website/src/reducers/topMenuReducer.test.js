@@ -4,7 +4,7 @@ import topMenuBarReducer from './topMenuBarReducer';
 describe('topMenuBarReducer', () => {
   it('should return default state', () => {
     const result = topMenuBarReducer(undefined, {});
-    expect(result).toEqual({ currentTab: 'home' });
+    expect(result).toEqual({ currentTab: '' });
   });
 
   it('should return correct payload on switching tab', () => {

@@ -32,10 +32,15 @@ module.exports = {
     '^.+\\.jsx$': 'babel-jest'
   },
 
-  // An array of regexp pattern strings used to skip coverage collection
+  // SignUpModal removed because formik is a pain to test, don't use in future
   coveragePathIgnorePatterns: [
+    'src/widgets/AccountDropdown/containers/AccountDropdownContainer.jsx',
+    'src/widgets/AccountDropdown/containers/SignUpModalContainer.jsx',
+    'src/widgets/AccountDropdown/components/SignUpModal.jsx',
     'src/widgets/TopMenuBar/containers/TopMenuBarContainer.jsx',
     'src/widgets/components/*',
+    'src/mock/store.js',
+    'src/config.js',
     'index.jsx'
   ],
 

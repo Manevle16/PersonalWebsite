@@ -3,7 +3,7 @@ import { NavDropdown, Nav } from 'react-bootstrap';
 import cookie from 'react-cookies';
 import SignUpModalContainer from '../containers/SignUpModalContainer';
 
-export default class extends React.Component {
+export default class AccountDropdown extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -14,7 +14,6 @@ export default class extends React.Component {
   componentDidMount() {
     const userId = cookie.load('userId');
     const token = cookie.load('token');
-    console.log(userId, token);
     if (userId && token) {
       this.props.checkIfLoggedIn(userId, token);
     }
@@ -38,9 +37,12 @@ export default class extends React.Component {
             <NavDropdown.Item href="#fake2">Logout</NavDropdown.Item>
           </NavDropdown>
         ) : (
-          <Nav.Link onClick={this.onClickSignIn}> Sign In </Nav.Link>
+          <Nav.Link onClick={this.onClickSignIn} data-id="SIGN_IN_MENU_BTN">
+            Sign In
+          </Nav.Link>
         )}
         <SignUpModalContainer
+          data-id="SIGN_UP_MODAL"
           show={this.state.showSignUp}
           handleClose={this.handleSignInClose}
         />

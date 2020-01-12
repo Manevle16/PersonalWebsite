@@ -3,7 +3,9 @@ import { getHostName } from '../reducers';
 export function checkIfUserIsLoggedIn({ userId, token }) {
   return fetch(
     getHostName() +
-      `/users/isLoggedIn?userId=${userId}&token=${encodeURIComponent(token)}`,
+      `/users/isLoggedIn?userId=${encodeURIComponent(
+        userId
+      )}&token=${encodeURIComponent(token)}`,
     {
       method: 'GET',
       headers: {
@@ -45,5 +47,33 @@ export function createUser({ email, username, password }) {
     })
     .catch(err => {
       return { signedUp: false };
+    });
+}
+
+export function logUserIn({ username, password }) {
+  return fetch(
+    getHostName() +
+      `/users/login?username=${encodeURIComponent(
+        username
+      )}&password=${encodeURIComponent(password)}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }
+  )
+    .then(res => {
+      if (res.status !== 200) {
+        return { loggedIn: false };
+      } else {
+        return res.json().then(body => ({
+          ...body,
+          loggedIn: true
+        }));
+      }
+    })
+    .catch(err => {
+      return { loggedIn: false };
     });
 }

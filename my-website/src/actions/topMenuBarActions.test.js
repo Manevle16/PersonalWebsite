@@ -14,7 +14,7 @@ import {
 describe('topMenuBarActions', () => {
   it('should correctly execute `switchTabHome`', () => {
     const result = switchTabHome();
-    expect(result).toEqual({ type: SWITCH_TAB_HOME, payload: 'home' });
+    expect(result).toEqual({ type: SWITCH_TAB_HOME, payload: '' });
   });
 
   it('should correctly execute `switchTabAbout`', () => {
@@ -29,7 +29,7 @@ describe('topMenuBarActions', () => {
     const result = switchTabProject();
     expect(result).toEqual({
       type: SWITCH_TAB_PROJECT,
-      payload: 'project'
+      payload: 'projects'
     });
   });
 

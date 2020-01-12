@@ -6,7 +6,7 @@ import {
 } from '../actions/actionTypes/topMenuBarActionTypes';
 
 const initialState = {
-  currentTab: 'home'
+  currentTab: ''
 };
 
 export default (state = initialState, { type, payload }) => {

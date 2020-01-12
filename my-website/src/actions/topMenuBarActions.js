@@ -8,7 +8,7 @@ import {
 export const switchTabHome = () => {
   return {
     type: SWITCH_TAB_HOME,
-    payload: 'home'
+    payload: ''
   };
 };
 
@@ -22,7 +22,7 @@ export const switchTabAbout = () => {
 export const switchTabProject = () => {
   return {
     type: SWITCH_TAB_PROJECT,
-    payload: 'project'
+    payload: 'projects'
   };
 };
 

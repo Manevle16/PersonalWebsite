@@ -148,8 +148,6 @@ module.exports = function() {
     if (!userId || !token) {
       res.status(400).send(JSON.stringify({ message: 'parameter missing' }));
     } else {
-      console.log(userId);
-      console.log(token);
       userTokenMapRepo.isUserLoggedIn(userId, token, (err, body) => {
         if (err) {
           res

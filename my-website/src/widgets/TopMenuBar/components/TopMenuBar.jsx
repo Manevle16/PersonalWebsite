@@ -34,11 +34,11 @@ export default class TopMenuBar extends React.Component {
 
     // eslint-disable-next-line
     switch (eventKey) {
-      case 'home':
+      case '':
         return switchTabHome();
       case 'about':
         return switchTabAbout();
-      case 'project':
+      case 'projects':
         return switchTabProject();
       case 'blog':
         return switchTabBlog();
@@ -47,7 +47,7 @@ export default class TopMenuBar extends React.Component {
 
   render() {
     const { currentTab } = this.props;
-    console.log(currentTab);
+
     return (
       <div className="top-menu-bar">
         <Navbar expand="sm">
@@ -60,7 +60,7 @@ export default class TopMenuBar extends React.Component {
               activeKey={currentTab}
             >
               <Nav.Item>
-                <Nav.Link href="/" data-id="TOP_MENU_HOME_BTN" eventKey="home">
+                <Nav.Link href="/" data-id="TOP_MENU_HOME_BTN" eventKey="">
                   Home
                 </Nav.Link>
               </Nav.Item>
@@ -68,7 +68,7 @@ export default class TopMenuBar extends React.Component {
                 <Nav.Link
                   href="/projects"
                   data-id="TOP_MENU_PROJECT_BTN"
-                  eventKey="project"
+                  eventKey="projects"
                 >
                   Projects
                 </Nav.Link>
