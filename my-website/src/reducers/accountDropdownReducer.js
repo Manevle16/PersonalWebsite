@@ -9,7 +9,7 @@ import {
 const initialState = {
   isLoggedIn: false
 };
-export default (state = initialState, { type, payload }) => {
+export default (state = initialState, { type }) => {
   switch (type) {
     case IS_LOGGED_IN:
     case SIGN_UP_SUCCESS:

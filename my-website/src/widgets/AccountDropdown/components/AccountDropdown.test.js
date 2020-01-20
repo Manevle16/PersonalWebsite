@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { noop } from 'lodash';
 import { spy } from 'sinon';
 import cookie from 'react-cookies';
@@ -37,7 +37,7 @@ describe('AccountDropdown', () => {
   });
 
   it('should be defined', () => {
-    renderWithProps();
+    renderWithProps({ isLoggedIn: true });
   });
 
   it('should call checkIfLoggedIn when userId and token cookies are present', () => {
@@ -63,5 +63,13 @@ describe('AccountDropdown', () => {
         .at(0)
         .props().show
     ).toEqual(true);
+  });
+
+  it('Should call handleSingInClose', () => {
+    const container = shallow(<AccountDropdown {...DEFAULT_PROPS} />);
+    container.instance().onClickSignIn();
+    expect(container.state('showSignUp')).toBeTruthy();
+    container.instance().handleSignInClose();
+    expect(container.state('showSignUp')).toBeFalsy();
   });
 });
