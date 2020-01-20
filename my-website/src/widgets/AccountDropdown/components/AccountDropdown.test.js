@@ -36,7 +36,7 @@ describe('AccountDropdown', () => {
     document.cookie = '';
   });
 
-  it('should be define', () => {
+  it('should be defined', () => {
     renderWithProps();
   });
 

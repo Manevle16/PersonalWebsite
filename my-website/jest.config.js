@@ -32,11 +32,11 @@ module.exports = {
     '^.+\\.jsx$': 'babel-jest'
   },
 
-  // SignUpModal removed because formik is a pain to test, don't use in future
   coveragePathIgnorePatterns: [
     'src/widgets/AccountDropdown/containers/AccountDropdownContainer.jsx',
     'src/widgets/AccountDropdown/containers/SignUpModalContainer.jsx',
-    'src/widgets/AccountDropdown/components/SignUpModal.jsx',
+    'src/widgets/AccountDropdown/components/SignUpForm.js',
+    'src/widgets/AccountDropdown/components/SignUpForm.test.js',
     'src/widgets/TopMenuBar/containers/TopMenuBarContainer.jsx',
     'src/widgets/components/*',
     'src/mock/store.js',
@@ -44,6 +44,11 @@ module.exports = {
     'index.jsx'
   ],
 
+  testPathIgnorePatterns: [
+    '\\\\node_modules\\\\',
+
+    'src/widgets/AccountDropdown/components/SignUpForm.test.js'
+  ],
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
   //   "json",
@@ -164,9 +169,6 @@ module.exports = {
   // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  // testPathIgnorePatterns: [
-  //   "\\\\node_modules\\\\"
-  // ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
