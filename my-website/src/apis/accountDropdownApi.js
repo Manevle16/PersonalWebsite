@@ -21,7 +21,6 @@ export function checkIfUserIsLoggedIn({ userId, token }) {
       }
     })
     .catch(err => {
-      console.log(err);
       return false;
     });
 }
