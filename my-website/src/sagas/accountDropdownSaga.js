@@ -16,7 +16,7 @@ export function* checkIfLoggedIn(action) {
   try {
     const { userId, token } = action.payload;
     const isLoggedIn = yield call(checkIfUserIsLoggedIn, { userId, token });
-    console.log(isLoggedIn);
+
     if (isLoggedIn) {
       yield put({ type: IS_LOGGED_IN });
     } else {
@@ -47,11 +47,10 @@ export function* logInUser(action) {
   try {
     const { username, password } = action.payload;
     const response = yield call(logUserIn, { username, password });
-    console.log(response);
+
     if (!response.loggedIn) {
       yield put({ type: IS_NOT_LOGGED_IN });
     } else {
-      console.log(response);
       cookie.save('token', response.token, { path: '/' });
       cookie.save('userId', response.userId, { path: '/' });
       yield put({ type: IS_LOGGED_IN });
