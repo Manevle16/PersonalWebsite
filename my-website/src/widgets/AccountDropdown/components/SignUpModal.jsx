@@ -24,8 +24,8 @@ export default class SignUpModal extends React.Component {
         show={show}
         onHide={handleClose}
         centered
-        className='sign-up-modal'
-        data-id='SIGN_UP_MODAL'
+        className="sign-up-modal"
+        data-id="SIGN_UP_MODAL"
       >
         <Modal.Header closeButton>
           <Modal.Title>

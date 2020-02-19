@@ -11,7 +11,7 @@ export default function SignUpForm({
 }) {
   return (
     <Formik
-      data-id='SIGN_UP_MODAL_FORMIK'
+      data-id="SIGN_UP_MODAL_FORMIK"
       initialValues={{
         email: '',
         username: '',
@@ -53,21 +53,21 @@ export default function SignUpForm({
         return (
           <Form>
             {!isSigningIn && (
-              <div className='form-group'>
+              <div className="form-group">
                 <label>Email</label>
                 <Field
-                  data-id='SIGN_UP_MODAL_EMAIL_INPUT'
-                  name='email'
+                  data-id="SIGN_UP_MODAL_EMAIL_INPUT"
+                  name="email"
                   className={
                     Boolean(touched.email && errors.email) ? 'field-error' : ''
                   }
                 />
               </div>
             )}
-            <div className='form-group'>
+            <div className="form-group">
               <label>Username</label>
               <Field
-                name='username'
+                name="username"
                 className={
                   Boolean(touched.username && errors.username)
                     ? 'field-error'
@@ -75,10 +75,10 @@ export default function SignUpForm({
                 }
               />
             </div>
-            <div className='form-group'>
+            <div className="form-group">
               <label>Password</label>
               <Field
-                name='password'
+                name="password"
                 className={
                   Boolean(touched.password && errors.password)
                     ? 'field-error'
@@ -87,10 +87,10 @@ export default function SignUpForm({
               />
             </div>
             {!isSigningIn && (
-              <div className='form-group'>
+              <div className="form-group">
                 <label>Retype Password</label>
                 <Field
-                  name='passVerify'
+                  name="passVerify"
                   className={
                     Boolean(touched.passVerify && errors.passVerify)
                       ? 'field-error'
@@ -101,16 +101,16 @@ export default function SignUpForm({
             )}
             <Modal.Footer>
               <Button
-                variant='secondary'
+                variant="secondary"
                 onClick={handleFormSwitch}
-                data-id='SIGN_UP_MODAL_FORM_BTN'
+                data-id="SIGN_UP_MODAL_FORM_BTN"
               >
                 {isSigningIn ? 'Create Account Form' : 'Sign In Form'}
               </Button>
               <Button
-                variant='primary'
-                type='submit'
-                data-id='SIGN_UP_MODAL_SUBMIT_BTN'
+                variant="primary"
+                type="submit"
+                data-id="SIGN_UP_MODAL_SUBMIT_BTN"
               >
                 {isSigningIn ? 'Sign In' : 'Create Account'}
               </Button>

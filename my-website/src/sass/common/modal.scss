@@ -79,5 +79,28 @@
         color: black;
       }
     }
+    .error-modal {
+      background-color: white;
+      border-radius: 8px;
+      .modal-title {
+        color: color('warning');
+        font-weight: bold;
+      }
+
+      .modal-body {
+        font-size: 16px;
+      }
+
+      .modal-footer {
+        background-color: white;
+        justify-content: end;
+      }
+
+      .btn {
+        float: right;
+        background-color: color('pink1');
+        border: 0px;
+      }
+    }
   }
 }

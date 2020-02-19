@@ -4,7 +4,8 @@ import {
   IS_LOGGED_IN,
   IS_NOT_LOGGED_IN,
   SIGN_UP_SUCCESS,
-  SIGN_UP_FAILURE
+  SIGN_UP_FAILURE,
+  LOG_IN_FAILURE
 } from '../actions/actionTypes/accountDropdownActionTypes';
 import {
   checkIfUserIsLoggedIn,
@@ -49,13 +50,13 @@ export function* logInUser(action) {
     const response = yield call(logUserIn, { username, password });
 
     if (!response.loggedIn) {
-      yield put({ type: IS_NOT_LOGGED_IN });
+      yield put({ type: LOG_IN_FAILURE });
     } else {
       cookie.save('token', response.token, { path: '/' });
       cookie.save('userId', response.userId, { path: '/' });
       yield put({ type: IS_LOGGED_IN });
     }
   } catch (err) {
-    yield put({ type: IS_NOT_LOGGED_IN });
+    yield put({ type: LOG_IN_FAILURE });
   }
 }
