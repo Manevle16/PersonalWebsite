@@ -79,9 +79,16 @@
         color: black;
       }
     }
-    .error-modal {
-      background-color: white;
-      border-radius: 8px;
+  }
+
+  .error-modal {
+    border-radius: 8px;
+    border: solid 3px color('warning');
+
+    .modal-content {
+      background-color: whitesmoke;
+      border: unset;
+
       .modal-title {
         color: color('warning');
         font-weight: bold;
@@ -92,14 +99,13 @@
       }
 
       .modal-footer {
-        background-color: white;
+        background-color: whitesmoke;
         justify-content: end;
-      }
-
-      .btn {
-        float: right;
-        background-color: color('pink1');
-        border: 0px;
+        .btn {
+          float: right;
+          background-color: color('pink1');
+          border: 0px;
+        }
       }
     }
   }

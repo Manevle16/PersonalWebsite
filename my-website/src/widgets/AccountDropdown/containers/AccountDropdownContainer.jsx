@@ -14,4 +14,7 @@ const mapDispatchToProps = dispatch => ({
   closeError: () => dispatch(closeError())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginDropdown);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginDropdown);

@@ -1,30 +1,33 @@
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import Dropdown from '../../AccountDropdown/containers/AccountDropdownContainer';
+import AnimatedNavUnderline from './AnimatedNavUnderline';
 
 export default class TopMenuBar extends React.Component {
-  componentDidMount() {
-    const {
-      currentPath,
-      switchTabAbout,
-      switchTabBlog,
-      switchTabProject
-    } = this.props;
+  constructor(props) {
+    super(props);
+    this.state = {
+      underlineWidth: 0,
+      underlinePos: 0
+    };
 
-    // eslint-disable-next-line
-    switch (currentPath) {
-      case '/about':
-        return switchTabAbout();
-      case '/blog':
-        return switchTabBlog();
-      case '/projects':
-        return switchTabProject();
-    }
+    this.homeRef = React.createRef();
+    this.aboutRef = React.createRef();
+    this.blogRef = React.createRef();
+    this.projectsRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.switchTabs(this.props.currentPath);
   }
 
   onTabClick = (eventKey, e) => {
     e.preventDefault();
-    window.history.pushState({}, eventKey, '\\' + eventKey);
+    window.history.pushState({}, eventKey, eventKey); //Changes url in browser without refreshing page
+    this.switchTabs(eventKey);
+  };
+
+  switchTabs = tab => {
     const {
       switchTabHome,
       switchTabAbout,
@@ -33,15 +36,31 @@ export default class TopMenuBar extends React.Component {
     } = this.props;
 
     // eslint-disable-next-line
-    switch (eventKey) {
-      case '':
+    switch (tab) {
+      case '/':
+        this.setState({
+          underlineWidth: this.homeRef.current.offsetWidth,
+          underlinePos: this.homeRef.current.getBoundingClientRect().x
+        });
         return switchTabHome();
-      case 'about':
+      case '/about':
+        this.setState({
+          underlineWidth: this.aboutRef.current.offsetWidth,
+          underlinePos: this.aboutRef.current.getBoundingClientRect().x
+        });
         return switchTabAbout();
-      case 'projects':
-        return switchTabProject();
-      case 'blog':
+      case '/blog':
+        this.setState({
+          underlineWidth: this.blogRef.current.offsetWidth,
+          underlinePos: this.blogRef.current.getBoundingClientRect().x
+        });
         return switchTabBlog();
+      case '/projects':
+        this.setState({
+          underlineWidth: this.projectsRef.current.offsetWidth,
+          underlinePos: this.projectsRef.current.getBoundingClientRect().x
+        });
+        return switchTabProject();
     }
   };
 
@@ -54,39 +73,45 @@ export default class TopMenuBar extends React.Component {
           <Navbar.Brand>MN</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse className="justify-content-end">
+            {this.state.underlineWidth && this.state.underlinePos ? (
+              <AnimatedNavUnderline
+                width={this.state.underlineWidth}
+                position={this.state.underlinePos}
+              />
+            ) : null}
             <Nav
               onSelect={this.onTabClick}
               variant="tabs"
-              activeKey={currentTab}
+              activeKey={'/' + currentTab}
             >
-              <Nav.Item>
-                <Nav.Link href="/" data-id="TOP_MENU_HOME_BTN" eventKey="">
+              <Nav.Item ref={this.homeRef}>
+                <Nav.Link href="/" data-id="TOP_MENU_HOME_BTN" eventKey="/">
                   Home
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item>
+              <Nav.Item ref={this.projectsRef}>
                 <Nav.Link
                   href="/projects"
                   data-id="TOP_MENU_PROJECT_BTN"
-                  eventKey="projects"
+                  eventKey="/projects"
                 >
                   Projects
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item>
+              <Nav.Item ref={this.blogRef}>
                 <Nav.Link
                   href="/blog"
                   data-id="TOP_MENU_BLOG_BTN"
-                  eventKey="blog"
+                  eventKey="/blog"
                 >
                   Blog
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item>
+              <Nav.Item ref={this.aboutRef}>
                 <Nav.Link
                   href="/about"
                   data-id="TOP_MENU_ABOUT_BTN"
-                  eventKey="about"
+                  eventKey="/about"
                 >
                   About
                 </Nav.Link>
