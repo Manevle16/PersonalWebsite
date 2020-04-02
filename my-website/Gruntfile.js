@@ -33,6 +33,7 @@ module.exports = function(grunt) {
     },
 
     githooks: {
+      dest: '../.git/hooks',
       all: {
         'pre-commit': 'prettier eslint'
       }
