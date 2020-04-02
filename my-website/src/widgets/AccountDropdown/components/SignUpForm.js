@@ -2,16 +2,10 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { Formik, Form, Field } from 'formik';
 
-export default function SignUpForm({
-  isSigningIn,
-  handleClose,
-  signUpUser,
-  logInUser,
-  handleFormSwitch
-}) {
+export default function SignUpForm({ isSigningIn, handleClose, signUpUser, logInUser, handleFormSwitch }) {
   return (
     <Formik
-      data-id="SIGN_UP_MODAL_FORMIK"
+      data-id='SIGN_UP_MODAL_FORMIK'
       initialValues={{
         email: '',
         username: '',
@@ -53,65 +47,37 @@ export default function SignUpForm({
         return (
           <Form>
             {!isSigningIn && (
-              <div className="form-group">
+              <div className='form-group'>
                 <label>Email</label>
                 <Field
-                  data-id="SIGN_UP_MODAL_EMAIL_INPUT"
-                  name="email"
-                  className={
-                    Boolean(touched.email && errors.email) ? 'field-error' : ''
-                  }
+                  data-id='SIGN_UP_MODAL_EMAIL_INPUT'
+                  name='email'
+                  className={Boolean(touched.email && errors.email) ? 'field-error' : ''}
                 />
               </div>
             )}
-            <div className="form-group">
+            <div className='form-group'>
               <label>Username</label>
-              <Field
-                name="username"
-                className={
-                  Boolean(touched.username && errors.username)
-                    ? 'field-error'
-                    : ''
-                }
-              />
+              <Field name='username' className={Boolean(touched.username && errors.username) ? 'field-error' : ''} />
             </div>
-            <div className="form-group">
+            <div className='form-group'>
               <label>Password</label>
-              <Field
-                name="password"
-                className={
-                  Boolean(touched.password && errors.password)
-                    ? 'field-error'
-                    : ''
-                }
-              />
+              <Field name='password' className={Boolean(touched.password && errors.password) ? 'field-error' : ''} />
             </div>
             {!isSigningIn && (
-              <div className="form-group">
+              <div className='form-group'>
                 <label>Retype Password</label>
                 <Field
-                  name="passVerify"
-                  className={
-                    Boolean(touched.passVerify && errors.passVerify)
-                      ? 'field-error'
-                      : ''
-                  }
+                  name='passVerify'
+                  className={Boolean(touched.passVerify && errors.passVerify) ? 'field-error' : ''}
                 />
               </div>
             )}
             <Modal.Footer>
-              <Button
-                variant="secondary"
-                onClick={handleFormSwitch}
-                data-id="SIGN_UP_MODAL_FORM_BTN"
-              >
+              <Button variant='secondary' onClick={handleFormSwitch} data-id='SIGN_UP_MODAL_FORM_BTN'>
                 {isSigningIn ? 'Create Account Form' : 'Sign In Form'}
               </Button>
-              <Button
-                variant="primary"
-                type="submit"
-                data-id="SIGN_UP_MODAL_SUBMIT_BTN"
-              >
+              <Button variant='primary' type='submit' data-id='SIGN_UP_MODAL_SUBMIT_BTN'>
                 {isSigningIn ? 'Sign In' : 'Create Account'}
               </Button>
             </Modal.Footer>

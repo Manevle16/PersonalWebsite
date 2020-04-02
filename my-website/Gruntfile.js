@@ -7,7 +7,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
     prettier: {
       options: {
-        singleQuote: true
+        singleQuote: true,
+        jsxSingleQuote: true,
+        printWidth: 120,
+        tabWidth: 2,
+        semi: true
       },
       files: {
         src: ['*.js', 'src/**/*.*']
@@ -35,11 +39,6 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', [
-    'githooks',
-    'prettier',
-    'eslint',
-    'run:npm_start'
-  ]);
+  grunt.registerTask('default', ['githooks', 'prettier', 'eslint', 'run:npm_start']);
   grunt.registerTask('test', ['run:npm_test_jest']);
 };

@@ -1,12 +1,7 @@
 import { connect } from 'react-redux';
 import TopMenuBar from '../components/TopMenuBar';
 import { getCurrentTab } from '../../../reducers';
-import {
-  switchTabHome,
-  switchTabAbout,
-  switchTabProject,
-  switchTabBlog
-} from '../../../actions/topMenuBarActions';
+import { switchTabHome, switchTabAbout, switchTabProject, switchTabBlog } from '../../../actions/topMenuBarActions';
 
 const mapStateToProps = state => ({
   currentTab: getCurrentTab(state)

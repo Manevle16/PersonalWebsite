@@ -31,27 +31,23 @@ export default class AccountDropdown extends React.Component {
   render() {
     const { isLoggedIn, error, closeError } = this.props;
     return (
-      <div className="account-dropdown">
+      <div className='account-dropdown'>
         {isLoggedIn ? (
-          <NavDropdown title="Account" id="account_dropdown">
-            <NavDropdown.Item href="#fake1">Settings</NavDropdown.Item>
-            <NavDropdown.Item href="#fake2">Logout</NavDropdown.Item>
+          <NavDropdown title='Account' id='account_dropdown'>
+            <NavDropdown.Item href='#fake1'>Settings</NavDropdown.Item>
+            <NavDropdown.Item href='#fake2'>Logout</NavDropdown.Item>
           </NavDropdown>
         ) : (
-          <Nav.Link onClick={this.onClickSignIn} data-id="SIGN_IN_MENU_BTN">
+          <Nav.Link onClick={this.onClickSignIn} data-id='SIGN_IN_MENU_BTN'>
             Sign In
           </Nav.Link>
         )}
         <SignUpModalContainer
-          data-id="SIGN_UP_MODAL"
+          data-id='SIGN_UP_MODAL'
           show={this.state.showSignUp}
           handleClose={this.handleSignInClose}
         />
-        <ErrorModal
-          show={error.isError}
-          body={error.errorBody}
-          onHide={closeError}
-        />
+        <ErrorModal show={error.isError} body={error.errorBody} onHide={closeError} />
       </div>
     );
   }

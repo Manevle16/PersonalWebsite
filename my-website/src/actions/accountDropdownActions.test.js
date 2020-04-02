@@ -1,13 +1,5 @@
-import {
-  CHECK_IF_LOGGED_IN,
-  SIGN_UP_USER,
-  LOG_IN_USER
-} from './actionTypes/accountDropdownActionTypes';
-import {
-  checkIfLoggedIn,
-  signUpUser,
-  logInUser
-} from './accountDropdownActions';
+import { CHECK_IF_LOGGED_IN, SIGN_UP_USER, LOG_IN_USER } from './actionTypes/accountDropdownActionTypes';
+import { checkIfLoggedIn, signUpUser, logInUser } from './accountDropdownActions';
 
 describe('accountDropdownActions', () => {
   it('Should correctly execute `checkIfLoggedIn`', () => {

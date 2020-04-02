@@ -9,7 +9,7 @@ function AnimatedNavUnderline({ width, position }) {
       left: position
     }
   });
-  return <animated.div className="nav-underline" style={style}></animated.div>;
+  return <animated.div className='nav-underline' style={style}></animated.div>;
 }
 
 AnimatedNavUnderline.propTypes = {

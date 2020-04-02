@@ -17,20 +17,20 @@ export default class Website extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="website">
+        <div className='website'>
           <TopMenuBarWidgetContainer currentPath={this.state.currentPath} />
           <Router>
             <Switch>
-              <Route exact path="/">
+              <Route exact path='/'>
                 <UnderConstruction />
               </Route>
-              <Route path="/projects">
+              <Route path='/projects'>
                 <UnderConstruction />
               </Route>
-              <Route path="/blog">
+              <Route path='/blog'>
                 <UnderConstruction />
               </Route>
-              <Route path="/about">
+              <Route path='/about'>
                 <UnderConstruction />
               </Route>
               <Route>This is not a page on the site</Route>

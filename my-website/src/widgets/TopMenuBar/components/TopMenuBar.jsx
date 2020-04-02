@@ -28,12 +28,7 @@ export default class TopMenuBar extends React.Component {
   };
 
   switchTabs = tab => {
-    const {
-      switchTabHome,
-      switchTabAbout,
-      switchTabProject,
-      switchTabBlog
-    } = this.props;
+    const { switchTabHome, switchTabAbout, switchTabProject, switchTabBlog } = this.props;
 
     // eslint-disable-next-line
     switch (tab) {
@@ -68,51 +63,32 @@ export default class TopMenuBar extends React.Component {
     const { currentTab } = this.props;
 
     return (
-      <div className="top-menu-bar">
-        <Navbar expand="sm">
+      <div className='top-menu-bar'>
+        <Navbar expand='sm'>
           <Navbar.Brand>MN</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse className="justify-content-end">
+          <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+          <Navbar.Collapse className='justify-content-end'>
             {this.state.underlineWidth && this.state.underlinePos ? (
-              <AnimatedNavUnderline
-                width={this.state.underlineWidth}
-                position={this.state.underlinePos}
-              />
+              <AnimatedNavUnderline width={this.state.underlineWidth} position={this.state.underlinePos} />
             ) : null}
-            <Nav
-              onSelect={this.onTabClick}
-              variant="tabs"
-              activeKey={'/' + currentTab}
-            >
+            <Nav onSelect={this.onTabClick} variant='tabs' activeKey={'/' + currentTab}>
               <Nav.Item ref={this.homeRef}>
-                <Nav.Link href="/" data-id="TOP_MENU_HOME_BTN" eventKey="/">
+                <Nav.Link href='/' data-id='TOP_MENU_HOME_BTN' eventKey='/'>
                   Home
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item ref={this.projectsRef}>
-                <Nav.Link
-                  href="/projects"
-                  data-id="TOP_MENU_PROJECT_BTN"
-                  eventKey="/projects"
-                >
+                <Nav.Link href='/projects' data-id='TOP_MENU_PROJECT_BTN' eventKey='/projects'>
                   Projects
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item ref={this.blogRef}>
-                <Nav.Link
-                  href="/blog"
-                  data-id="TOP_MENU_BLOG_BTN"
-                  eventKey="/blog"
-                >
+                <Nav.Link href='/blog' data-id='TOP_MENU_BLOG_BTN' eventKey='/blog'>
                   Blog
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item ref={this.aboutRef}>
-                <Nav.Link
-                  href="/about"
-                  data-id="TOP_MENU_ABOUT_BTN"
-                  eventKey="/about"
-                >
+                <Nav.Link href='/about' data-id='TOP_MENU_ABOUT_BTN' eventKey='/about'>
                   About
                 </Nav.Link>
               </Nav.Item>

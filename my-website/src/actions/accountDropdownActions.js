@@ -1,8 +1,4 @@
-import {
-  CHECK_IF_LOGGED_IN,
-  SIGN_UP_USER,
-  LOG_IN_USER
-} from './actionTypes/accountDropdownActionTypes';
+import { CHECK_IF_LOGGED_IN, SIGN_UP_USER, LOG_IN_USER } from './actionTypes/accountDropdownActionTypes';
 
 export const checkIfLoggedIn = (userId, token) => {
   return {

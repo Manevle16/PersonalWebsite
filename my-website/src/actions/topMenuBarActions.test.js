@@ -1,9 +1,4 @@
-import {
-  switchTabHome,
-  switchTabAbout,
-  switchTabProject,
-  switchTabBlog
-} from './topMenuBarActions';
+import { switchTabHome, switchTabAbout, switchTabProject, switchTabBlog } from './topMenuBarActions';
 import {
   SWITCH_TAB_HOME,
   SWITCH_TAB_ABOUT,

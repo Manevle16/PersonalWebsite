@@ -2,11 +2,7 @@ import { expectSaga } from 'redux-saga-test-plan';
 import { throwError } from 'redux-saga-test-plan/providers';
 import { checkIfLoggedIn, signUserUp, logInUser } from './accountDropdownSaga';
 import * as matchers from 'redux-saga-test-plan/matchers';
-import {
-  checkIfUserIsLoggedIn,
-  createUser,
-  logUserIn
-} from '../apis/accountDropdownApi';
+import { checkIfUserIsLoggedIn, createUser, logUserIn } from '../apis/accountDropdownApi';
 import {
   IS_LOGGED_IN,
   IS_NOT_LOGGED_IN,
@@ -53,12 +49,7 @@ describe('accountDropdownSaga', () => {
           password: ''
         }
       })
-        .provide([
-          [
-            matchers.call.fn(createUser),
-            { signedUp: true, token: 'mockToken', userId: 'mockUser' }
-          ]
-        ])
+        .provide([[matchers.call.fn(createUser), { signedUp: true, token: 'mockToken', userId: 'mockUser' }]])
         .put({ type: SIGN_UP_SUCCESS })
         .run();
     });
@@ -98,12 +89,7 @@ describe('accountDropdownSaga', () => {
           password: ''
         }
       })
-        .provide([
-          [
-            matchers.call.fn(logUserIn),
-            { loggedIn: true, token: '', userId: '' }
-          ]
-        ])
+        .provide([[matchers.call.fn(logUserIn), { loggedIn: true, token: '', userId: '' }]])
         .put({ type: IS_LOGGED_IN })
         .run();
     });

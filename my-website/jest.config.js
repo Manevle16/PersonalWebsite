@@ -44,11 +44,7 @@ module.exports = {
     'index.jsx'
   ],
 
-  testPathIgnorePatterns: [
-    '\\\\node_modules\\\\',
-
-    'src/widgets/AccountDropdown/components/SignUpForm.test.js'
-  ],
+  testPathIgnorePatterns: ['\\\\node_modules\\\\', 'src/widgets/AccountDropdown/components/SignUpForm.test.js'],
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
   //   "json",

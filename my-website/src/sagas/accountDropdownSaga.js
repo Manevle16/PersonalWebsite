@@ -7,11 +7,7 @@ import {
   SIGN_UP_FAILURE,
   LOG_IN_FAILURE
 } from '../actions/actionTypes/accountDropdownActionTypes';
-import {
-  checkIfUserIsLoggedIn,
-  createUser,
-  logUserIn
-} from '../apis/accountDropdownApi';
+import { checkIfUserIsLoggedIn, createUser, logUserIn } from '../apis/accountDropdownApi';
 
 export function* checkIfLoggedIn(action) {
   try {

@@ -1,8 +1,4 @@
-import {
-  checkIfUserIsLoggedIn,
-  createUser,
-  logUserIn
-} from './accountDropdownApi';
+import { checkIfUserIsLoggedIn, createUser, logUserIn } from './accountDropdownApi';
 
 describe('accountDropdownApi', () => {
   describe('checkIfUserIsLoggedIn', () => {
@@ -39,10 +35,7 @@ describe('accountDropdownApi', () => {
 
   describe('createUser', () => {
     it('should return correct payload on status 200', async () => {
-      fetch.mockResponseOnce(
-        JSON.stringify({ token: 'mockToken', userId: 'mockUser' }),
-        { status: 200 }
-      );
+      fetch.mockResponseOnce(JSON.stringify({ token: 'mockToken', userId: 'mockUser' }), { status: 200 });
 
       let response = await createUser({
         email: '',
@@ -84,10 +77,7 @@ describe('accountDropdownApi', () => {
 
   describe('logUserIn', () => {
     it('should return correct payload on status 200', async () => {
-      fetch.mockResponseOnce(
-        JSON.stringify({ token: 'mockToken', userId: 'mockUser' }),
-        { status: 200 }
-      );
+      fetch.mockResponseOnce(JSON.stringify({ token: 'mockToken', userId: 'mockUser' }), { status: 200 });
 
       let response = await logUserIn({ username: '', password: '' });
 

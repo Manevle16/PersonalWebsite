@@ -2,10 +2,7 @@ import { getHostName } from '../reducers';
 
 export function checkIfUserIsLoggedIn({ userId, token }) {
   return fetch(
-    getHostName() +
-      `/users/isLoggedIn?userId=${encodeURIComponent(
-        userId
-      )}&token=${encodeURIComponent(token)}`,
+    getHostName() + `/users/isLoggedIn?userId=${encodeURIComponent(userId)}&token=${encodeURIComponent(token)}`,
     {
       method: 'GET',
       headers: {
@@ -51,10 +48,7 @@ export function createUser({ email, username, password }) {
 
 export function logUserIn({ username, password }) {
   return fetch(
-    getHostName() +
-      `/users/login?username=${encodeURIComponent(
-        username
-      )}&password=${encodeURIComponent(password)}`,
+    getHostName() + `/users/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
     {
       method: 'GET',
       headers: {
