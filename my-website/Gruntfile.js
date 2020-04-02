@@ -2,6 +2,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-run');
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-prettier');
+  grunt.loadNpmTasks('grunt-githooks');
 
   grunt.initConfig({
     prettier: {
@@ -25,9 +26,20 @@ module.exports = function(grunt) {
       npm_test_jest: {
         exec: 'npm run test' // <-- use the exec key.
       }
+    },
+
+    githooks: {
+      all: {
+        'pre-commit': 'prettier eslint'
+      }
     }
   });
 
-  grunt.registerTask('default', ['prettier', 'eslint', 'run:npm_start']);
+  grunt.registerTask('default', [
+    'githooks',
+    'prettier',
+    'eslint',
+    'run:npm_start'
+  ]);
   grunt.registerTask('test', ['run:npm_test_jest']);
 };
