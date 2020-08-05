@@ -17,8 +17,44 @@ export default class TopMenuBar extends React.Component {
     this.projectsRef = React.createRef();
   }
 
+  resize = () => {
+    switch (this.props.currentTab) {
+      case '':
+        this.setState({
+          underlineWidth: this.homeRef.current.offsetWidth,
+          underlinePos: this.homeRef.current.getBoundingClientRect().x
+        });
+        return;
+      case '/about':
+        this.setState({
+          underlineWidth: this.aboutRef.current.offsetWidth,
+          underlinePos: this.aboutRef.current.getBoundingClientRect().x
+        });
+        return;
+      case '/blog':
+        this.setState({
+          underlineWidth: this.blogRef.current.offsetWidth,
+          underlinePos: this.blogRef.current.getBoundingClientRect().x
+        });
+        return;
+      case '/projects':
+        this.setState({
+          underlineWidth: this.projectsRef.current.offsetWidth,
+          underlinePos: this.projectsRef.current.getBoundingClientRect().x
+        });
+        return;
+    }
+  };
+
   componentDidMount() {
-    this.switchTabs(this.props.currentPath);
+    setTimeout(() => {
+      window.addEventListener('resize', this.resize);
+      this.switchTabs(this.props.currentPath);
+    }, 0);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resize);
   }
 
   onTabClick = (eventKey, e) => {
@@ -61,7 +97,7 @@ export default class TopMenuBar extends React.Component {
 
   render() {
     const { currentTab } = this.props;
-
+    console.log(this.state.underlineWidth, this.state.underlinePos);
     return (
       <div className='top-menu-bar'>
         <Navbar expand='sm'>
