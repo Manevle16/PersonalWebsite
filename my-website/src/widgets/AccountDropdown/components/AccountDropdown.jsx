@@ -20,6 +20,13 @@ export default class AccountDropdown extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.isLoggedIn !== this.props.isLoggedIn) {
+      //                  Update the nav underline position if size of this widget changes
+      this.props.resize();
+    }
+  }
+
   onClickSignIn = () => {
     this.setState({ showSignUp: true });
   };

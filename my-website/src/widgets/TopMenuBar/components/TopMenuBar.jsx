@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import Dropdown from '../../AccountDropdown/containers/AccountDropdownContainer';
+import AccountDropdown from '../../AccountDropdown/containers/AccountDropdownContainer';
 import AnimatedNavUnderline from './AnimatedNavUnderline';
 
 export default class TopMenuBar extends React.Component {
@@ -131,7 +131,7 @@ export default class TopMenuBar extends React.Component {
                 </Nav.Link>
               </Nav.Item>
               <NavItem>
-                <Dropdown />
+                <AccountDropdown resize={this.resize} />
               </NavItem>
             </Nav>
           </Navbar.Collapse>
