@@ -11,7 +11,8 @@ module.exports = function(grunt) {
         jsxSingleQuote: true,
         printWidth: 120,
         tabWidth: 2,
-        semi: true
+        semi: true,
+        trailingComma: 'none'
       },
       files: {
         src: ['*.js', 'src/**/*.*']
@@ -42,6 +43,6 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['githooks', 'prettier', 'eslint', 'run:npm_start']);
+  grunt.registerTask('default', ['githooks', 'prettier', 'eslint']);
   grunt.registerTask('test', ['run:npm_test_jest']);
 };

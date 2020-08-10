@@ -8,7 +8,7 @@ export default class TopMenuBar extends React.Component {
     super(props);
     this.state = {
       underlineWidth: 0,
-      underlinePos: 0,
+      underlinePos: 0
     };
 
     this.homeRef = React.createRef();
@@ -22,26 +22,28 @@ export default class TopMenuBar extends React.Component {
       case '':
         this.setState({
           underlineWidth: this.homeRef.current.offsetWidth,
-          underlinePos: this.homeRef.current.getBoundingClientRect().x,
+          underlinePos: this.homeRef.current.getBoundingClientRect().x
         });
         return;
       case 'about':
         this.setState({
           underlineWidth: this.aboutRef.current.offsetWidth,
-          underlinePos: this.aboutRef.current.getBoundingClientRect().x,
+          underlinePos: this.aboutRef.current.getBoundingClientRect().x
         });
         return;
       case 'blog':
         this.setState({
           underlineWidth: this.blogRef.current.offsetWidth,
-          underlinePos: this.blogRef.current.getBoundingClientRect().x,
+          underlinePos: this.blogRef.current.getBoundingClientRect().x
         });
         return;
       case 'projects':
         this.setState({
           underlineWidth: this.projectsRef.current.offsetWidth,
-          underlinePos: this.projectsRef.current.getBoundingClientRect().x,
+          underlinePos: this.projectsRef.current.getBoundingClientRect().x
         });
+        return;
+      default:
         return;
     }
   };
@@ -63,7 +65,7 @@ export default class TopMenuBar extends React.Component {
     this.switchTabs(eventKey);
   };
 
-  switchTabs = (tab) => {
+  switchTabs = tab => {
     const { switchTabHome, switchTabAbout, switchTabProject, switchTabBlog } = this.props;
 
     // eslint-disable-next-line
@@ -71,25 +73,25 @@ export default class TopMenuBar extends React.Component {
       case '/':
         this.setState({
           underlineWidth: this.homeRef.current.offsetWidth,
-          underlinePos: this.homeRef.current.getBoundingClientRect().x,
+          underlinePos: this.homeRef.current.getBoundingClientRect().x
         });
         return switchTabHome();
       case '/about':
         this.setState({
           underlineWidth: this.aboutRef.current.offsetWidth,
-          underlinePos: this.aboutRef.current.getBoundingClientRect().x,
+          underlinePos: this.aboutRef.current.getBoundingClientRect().x
         });
         return switchTabAbout();
       case '/blog':
         this.setState({
           underlineWidth: this.blogRef.current.offsetWidth,
-          underlinePos: this.blogRef.current.getBoundingClientRect().x,
+          underlinePos: this.blogRef.current.getBoundingClientRect().x
         });
         return switchTabBlog();
       case '/projects':
         this.setState({
           underlineWidth: this.projectsRef.current.offsetWidth,
-          underlinePos: this.projectsRef.current.getBoundingClientRect().x,
+          underlinePos: this.projectsRef.current.getBoundingClientRect().x
         });
         return switchTabProject();
     }
@@ -97,7 +99,7 @@ export default class TopMenuBar extends React.Component {
 
   render() {
     const { currentTab } = this.props;
-    console.log(this.state.underlineWidth, this.state.underlinePos);
+
     return (
       <div className='top-menu-bar'>
         <Navbar expand='sm'>
