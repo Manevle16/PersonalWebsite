@@ -19,6 +19,7 @@ export const getHostName = createSelector(
 
 //TopMenuBar Selectors
 export const getTopMenuBar = state => state.topMenuBar;
+
 export const getCurrentTab = createSelector(
   getTopMenuBar,
   topMenuBar => topMenuBar.currentTab

@@ -1,8 +1,8 @@
 module.exports = function(grunt) {
-  grunt.loadNpmTasks('grunt-run');
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-prettier');
   grunt.loadNpmTasks('grunt-githooks');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.initConfig({
     prettier: {
@@ -12,7 +12,8 @@ module.exports = function(grunt) {
         printWidth: 120,
         tabWidth: 2,
         semi: true,
-        trailingComma: 'none'
+        trailingComma: 'none',
+        endOfLine: 'crlf'
       },
       files: {
         src: ['*.js', 'src/**/*.*']
@@ -21,18 +22,16 @@ module.exports = function(grunt) {
     eslint: {
       target: ['*.js', 'src/**.js']
     },
-    run: {
-      options: {
-        // ...
+    watch: {
+      prettier: {
+        files: ['*.js', 'src/**/*.*'],
+        tasks: ['prettier']
       },
-      npm_start: {
-        exec: 'npm run start'
-      },
-      npm_test_jest: {
-        exec: 'npm run test' // <-- use the exec key.
+      eslint: {
+        files: ['*.js', 'src/**.js'],
+        tasks: ['eslint']
       }
     },
-
     githooks: {
       all: {
         'pre-commit': 'prettier eslint',
@@ -44,5 +43,4 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('default', ['githooks', 'prettier', 'eslint']);
-  grunt.registerTask('test', ['run:npm_test_jest']);
 };
