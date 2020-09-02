@@ -7,7 +7,4 @@ const mapDispatchToProps = dispatch => ({
   logInUser: (username, password) => dispatch(logInUser(username, password))
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(SignUpModal);
+export default connect(null, mapDispatchToProps)(SignUpModal);

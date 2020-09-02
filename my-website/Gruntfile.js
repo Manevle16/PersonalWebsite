@@ -1,8 +1,13 @@
+const webpackDev = require('./webpack.dev.js');
+const webpackProd = require('./webpack.prod.js');
+
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-prettier');
   grunt.loadNpmTasks('grunt-githooks');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-webpack');
 
   grunt.initConfig({
     prettier: {
@@ -23,6 +28,9 @@ module.exports = function(grunt) {
       target: ['*.js', 'src/**.js']
     },
     watch: {
+      options: {
+        livereload: true
+      },
       prettier: {
         files: ['*.js', 'src/**/*.*'],
         tasks: ['prettier']
@@ -30,7 +38,26 @@ module.exports = function(grunt) {
       eslint: {
         files: ['*.js', 'src/**.js'],
         tasks: ['eslint']
+      },
+      js: {
+        files: ['src/**/*.js'],
+        tasks: ['webpack'],
+        options: {
+          interrupt: true
+        }
       }
+    },
+    connect: {
+      server: {
+        options: {
+          host: 'localhost',
+          port: 3000,
+          base: 'dist/'
+        }
+      }
+    },
+    webpack: {
+      myConfig: process.env.NODE_ENV === 'production' ? webpackProd : webpackDev
     },
     githooks: {
       all: {
@@ -42,5 +69,5 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['githooks', 'prettier', 'eslint']);
+  grunt.registerTask('default', ['webpack', 'connect', 'watch']);
 };

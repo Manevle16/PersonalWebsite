@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import TopMenuBar from '../components/TopMenuBar';
+import TopMenuBar from '../components/TopMenuBar.jsx';
 import { getCurrentTab } from '../../../reducers';
 import { switchTabHome, switchTabAbout, switchTabProject, switchTabBlog } from '../../../actions/topMenuBarActions';
 
@@ -14,7 +14,4 @@ const mapDispatchToProps = dispatch => ({
   switchTabBlog: () => dispatch(switchTabBlog())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TopMenuBar);
+export default connect(mapStateToProps, mapDispatchToProps)(TopMenuBar);
