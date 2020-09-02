@@ -52,7 +52,7 @@ export default class TopMenuBar extends React.Component {
     setTimeout(() => {
       window.addEventListener('resize', this.resize);
       this.switchTabs(this.props.currentPath);
-    }, 0);
+    }, 100);
   }
 
   componentWillUnmount() {
