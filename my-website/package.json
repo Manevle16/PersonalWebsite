@@ -25,7 +25,7 @@
     "run": "^1.4.0"
   },
   "scripts": {
-    "build": "webpack --config webpack.prod.js",
+    "build": "react-scripts build",
     "start": "webpack-dev-server --config webpack.dev.js",
     "test": "jest --verbose=false --coverage --watchAll",
     "eject": "react-scripts eject"
