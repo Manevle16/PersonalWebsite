@@ -12,15 +12,19 @@ module.exports = {
   },
   stats: {
     colors: true,
-    modules: true,
-    reasons: true
+    modules: false,
+    reasons: false,
+    hash: false,
+    version: false,
+    timings: false,
+    assets: false,
+    chunks: false
   },
 
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',

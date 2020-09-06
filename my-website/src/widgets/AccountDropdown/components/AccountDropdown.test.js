@@ -52,14 +52,14 @@ describe('AccountDropdown', () => {
     const { getLinkByDataId, container } = renderWithProps();
     expect(
       container
-        .find(`[data-id="SIGN_UP_MODAL"]`)
+        .find(`[data-id='SIGN_UP_MODAL']`)
         .at(0)
         .props().show
     ).toEqual(false);
     getLinkByDataId('SIGN_IN_MENU_BTN').simulate('click');
     expect(
       container
-        .find(`[data-id="SIGN_UP_MODAL"]`)
+        .find(`[data-id='SIGN_UP_MODAL']`)
         .at(0)
         .props().show
     ).toEqual(true);

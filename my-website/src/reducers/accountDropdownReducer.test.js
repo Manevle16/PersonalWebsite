@@ -1,10 +1,4 @@
-import {
-  CHECK_IF_LOGGED_IN,
-  IS_LOGGED_IN,
-  IS_NOT_LOGGED_IN,
-  SIGN_UP_SUCCESS,
-  SIGN_UP_FAILURE
-} from '../actions/actionTypes/accountDropdownActionTypes';
+import { CHECK_IF_LOGGED_IN, IS_LOGGED_IN } from '../actions/actionTypes/accountDropdownActionTypes';
 import AccountDropdownReducer from './accountDropdownReducer';
 
 describe('accountDropdownReducer', () => {

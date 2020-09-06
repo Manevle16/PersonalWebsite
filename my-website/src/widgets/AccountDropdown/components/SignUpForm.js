@@ -52,25 +52,22 @@ export default function SignUpForm({ isSigningIn, handleClose, signUpUser, logIn
                 <Field
                   data-id='SIGN_UP_MODAL_EMAIL_INPUT'
                   name='email'
-                  className={Boolean(touched.email && errors.email) ? 'field-error' : ''}
+                  className={touched.email && errors.email ? 'field-error' : ''}
                 />
               </div>
             )}
             <div className='form-group'>
               <label>Username</label>
-              <Field name='username' className={Boolean(touched.username && errors.username) ? 'field-error' : ''} />
+              <Field name='username' className={touched.username && errors.username ? 'field-error' : ''} />
             </div>
             <div className='form-group'>
               <label>Password</label>
-              <Field name='password' className={Boolean(touched.password && errors.password) ? 'field-error' : ''} />
+              <Field name='password' className={touched.password && errors.password ? 'field-error' : ''} />
             </div>
             {!isSigningIn && (
               <div className='form-group'>
                 <label>Retype Password</label>
-                <Field
-                  name='passVerify'
-                  className={Boolean(touched.passVerify && errors.passVerify) ? 'field-error' : ''}
-                />
+                <Field name='passVerify' className={touched.passVerify && errors.passVerify ? 'field-error' : ''} />
               </div>
             )}
             <Modal.Footer>

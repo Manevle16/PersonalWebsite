@@ -17,7 +17,7 @@ export function checkIfUserIsLoggedIn({ userId, token }) {
         return true;
       }
     })
-    .catch(err => {
+    .catch(() => {
       return false;
     });
 }
@@ -41,7 +41,7 @@ export function createUser({ email, username, password }) {
         }));
       }
     })
-    .catch(err => {
+    .catch(() => {
       return { signedUp: false };
     });
 }
@@ -66,7 +66,7 @@ export function logUserIn({ username, password }) {
         }));
       }
     })
-    .catch(err => {
+    .catch(() => {
       return { loggedIn: false };
     });
 }

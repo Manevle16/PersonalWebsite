@@ -99,7 +99,6 @@ export default class TopMenuBar extends React.Component {
 
   render() {
     const { currentTab } = this.props;
-
     return (
       <div className='top-menu-bar'>
         <Navbar expand='sm'>

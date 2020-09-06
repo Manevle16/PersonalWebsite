@@ -28,7 +28,7 @@ describe('<SignUpForm />', () => {
 
   it('should sign up correctly', async () => {
     const signUpUser = spy();
-    const { container, getByDataId } = renderWithProps({ signUpUser });
+    const { container } = renderWithProps({ signUpUser });
     container.setProps({
       initialValues: {
         email: 'test@test',

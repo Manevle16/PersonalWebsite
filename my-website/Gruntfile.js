@@ -25,22 +25,22 @@ module.exports = function(grunt) {
       }
     },
     eslint: {
-      target: ['*.js', 'src/**.js']
+      target: ['*.js', 'src/**/*.*', '!src/**/*.{scss,css}']
     },
     watch: {
       options: {
         livereload: true
       },
       prettier: {
-        files: ['*.js', 'src/**/*.*'],
+        files: ['*.{js,jsx,json}', 'src/**/*.*'],
         tasks: ['prettier']
       },
       eslint: {
-        files: ['*.js', 'src/**.js'],
+        files: ['*.{js,jsx,json}', 'src/**/*.*'],
         tasks: ['eslint']
       },
       js: {
-        files: ['src/**/*.js'],
+        files: ['*/*.*'],
         tasks: ['webpack'],
         options: {
           interrupt: true
@@ -52,7 +52,9 @@ module.exports = function(grunt) {
         options: {
           host: 'localhost',
           port: 3000,
-          base: 'dist/'
+          base: 'dist/',
+          livereload: true,
+          open: true
         }
       }
     },
@@ -69,5 +71,5 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['webpack', 'connect', 'watch']);
+  grunt.registerTask('default', ['prettier', 'eslint', 'webpack', 'connect', 'watch']);
 };
