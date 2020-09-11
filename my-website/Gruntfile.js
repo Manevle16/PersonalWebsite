@@ -40,7 +40,7 @@ module.exports = function(grunt) {
         tasks: ['eslint']
       },
       js: {
-        files: ['*/*.*'],
+        files: ['*.{js,jsx,json}', 'src/**/*.*'],
         tasks: ['webpack'],
         options: {
           interrupt: true

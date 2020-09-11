@@ -49,10 +49,8 @@ export default class TopMenuBar extends React.Component {
   };
 
   componentDidMount() {
-    setTimeout(() => {
-      window.addEventListener('resize', this.resize);
-      this.switchTabs(this.props.currentPath);
-    }, 100);
+    window.addEventListener('resize', this.resize);
+    this.switchTabs(this.props.currentPath);
   }
 
   componentWillUnmount() {
@@ -73,25 +71,25 @@ export default class TopMenuBar extends React.Component {
       case '/':
         this.setState({
           underlineWidth: this.homeRef.current.offsetWidth,
-          underlinePos: this.homeRef.current.getBoundingClientRect().x
+          underlinePos: this.homeRef.current.offsetLeft
         });
         return switchTabHome();
       case '/about':
         this.setState({
           underlineWidth: this.aboutRef.current.offsetWidth,
-          underlinePos: this.aboutRef.current.getBoundingClientRect().x
+          underlinePos: this.aboutRef.current.offsetLeft
         });
         return switchTabAbout();
       case '/blog':
         this.setState({
           underlineWidth: this.blogRef.current.offsetWidth,
-          underlinePos: this.blogRef.current.getBoundingClientRect().x
+          underlinePos: this.blogRef.current.offsetLeft
         });
         return switchTabBlog();
       case '/projects':
         this.setState({
           underlineWidth: this.projectsRef.current.offsetWidth,
-          underlinePos: this.projectsRef.current.getBoundingClientRect().x
+          underlinePos: this.projectsRef.current.offsetLeft
         });
         return switchTabProject();
     }
