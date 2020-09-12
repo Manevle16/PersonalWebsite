@@ -15,6 +15,13 @@ export default class TopMenuBar extends React.Component {
     this.aboutRef = React.createRef();
     this.blogRef = React.createRef();
     this.projectsRef = React.createRef();
+    window.addEventListener('resize', this.resize);
+    const timer = () =>
+      setTimeout(() => {
+        this.switchTabs(this.props.currentPath);
+      }, 0);
+    timer();
+    clearTimeout(timer);
   }
 
   resize = () => {
@@ -22,25 +29,25 @@ export default class TopMenuBar extends React.Component {
       case '':
         this.setState({
           underlineWidth: this.homeRef.current.offsetWidth,
-          underlinePos: this.homeRef.current.getBoundingClientRect().x
+          underlinePos: this.homeRef.current.offsetLeft
         });
         return;
       case 'about':
         this.setState({
           underlineWidth: this.aboutRef.current.offsetWidth,
-          underlinePos: this.aboutRef.current.getBoundingClientRect().x
+          underlinePos: this.aboutRef.current.offsetLeft
         });
         return;
       case 'blog':
         this.setState({
           underlineWidth: this.blogRef.current.offsetWidth,
-          underlinePos: this.blogRef.current.getBoundingClientRect().x
+          underlinePos: this.blogRef.current.offsetLeft
         });
         return;
       case 'projects':
         this.setState({
           underlineWidth: this.projectsRef.current.offsetWidth,
-          underlinePos: this.projectsRef.current.getBoundingClientRect().x
+          underlinePos: this.projectsRef.current.offsetLeft
         });
         return;
       default:
@@ -50,7 +57,13 @@ export default class TopMenuBar extends React.Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.resize);
-    this.switchTabs(this.props.currentPath);
+
+    let init = setInterval(() => {
+      this.switchTabs(this.props.currentPath);
+    }, 100);
+    setTimeout(() => {
+      clearInterval(init);
+    }, 1000);
   }
 
   componentWillUnmount() {
@@ -65,7 +78,7 @@ export default class TopMenuBar extends React.Component {
 
   switchTabs = tab => {
     const { switchTabHome, switchTabAbout, switchTabProject, switchTabBlog } = this.props;
-
+    console.log(this.homeRef.current.offsetLeft);
     // eslint-disable-next-line
     switch (tab) {
       case '/':

@@ -31,14 +31,6 @@ module.exports = function(grunt) {
       options: {
         livereload: true
       },
-      prettier: {
-        files: ['*.{js,jsx,json}', 'src/**/*.*'],
-        tasks: ['prettier']
-      },
-      eslint: {
-        files: ['*.{js,jsx,json}', 'src/**/*.*'],
-        tasks: ['eslint']
-      },
       js: {
         files: ['*.{js,jsx,json}', 'src/**/*.*'],
         tasks: ['webpack'],
