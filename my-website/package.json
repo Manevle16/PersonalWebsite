@@ -27,7 +27,6 @@
   },
   "scripts": {
     "build": "react-scripts build",
-    "postbuild": "gzip build/static/js/*.js && gzip build/static/css/*.css",
     "start": "webpack-dev-server --config webpack.dev.js",
     "test": "jest --verbose=false --coverage --watchAll",
     "eject": "react-scripts eject"
