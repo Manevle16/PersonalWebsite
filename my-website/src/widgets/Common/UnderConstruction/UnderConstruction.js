@@ -5,7 +5,7 @@ export default function UnderConstruction() {
     <div className='under-construction'>
       <img
         className='warning-image'
-        src='https://matthewnevle-media.s3.us-east-2.amazonaws.com/random/platelets.png'
+        src='https://d3df78u115mwer.cloudfront.net/random/platelets.png'
         alt='under construction anime girl'
       />
       <label>This part of the site is still under construction and has not been built yet</label>
