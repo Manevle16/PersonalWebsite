@@ -4,3 +4,4 @@
 website-server/Utils/config.js
 website-server/node_modules/
 certs/
+.DS_Store
