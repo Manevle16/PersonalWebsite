@@ -48,8 +48,10 @@ export default function SignUpForm({ isSigningIn, handleClose, signUpUser, logIn
           <Form>
             {!isSigningIn && (
               <div className='form-group'>
-                <label>Email</label>
+                <label htmlFor='email-input'>Email</label>
                 <Field
+                  type='text'
+                  id='email-input'
                   data-testid='SIGN_UP_MODAL_EMAIL_INPUT'
                   name='email'
                   className={touched.email && errors.email ? 'field-error' : ''}
@@ -57,17 +59,32 @@ export default function SignUpForm({ isSigningIn, handleClose, signUpUser, logIn
               </div>
             )}
             <div className='form-group'>
-              <label>Username</label>
-              <Field name='username' className={touched.username && errors.username ? 'field-error' : ''} />
+              <label htmlFor='username-input'>Username</label>
+              <Field
+                type='text'
+                id='username-input'
+                name='username'
+                className={touched.username && errors.username ? 'field-error' : ''}
+              />
             </div>
             <div className='form-group'>
-              <label>Password</label>
-              <Field name='password' className={touched.password && errors.password ? 'field-error' : ''} />
+              <label htmlFor='password-input'>Password</label>
+              <Field
+                type='text'
+                id='password-input'
+                name='password'
+                className={touched.password && errors.password ? 'field-error' : ''}
+              />
             </div>
             {!isSigningIn && (
               <div className='form-group'>
-                <label>Retype Password</label>
-                <Field name='passVerify' className={touched.passVerify && errors.passVerify ? 'field-error' : ''} />
+                <label htmlFor='retype-input'>Retype Password</label>
+                <Field
+                  type='text'
+                  id='retype-input'
+                  name='passVerify'
+                  className={touched.passVerify && errors.passVerify ? 'field-error' : ''}
+                />
               </div>
             )}
             <Modal.Footer>

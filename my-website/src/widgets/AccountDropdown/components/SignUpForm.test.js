@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { noop } from 'lodash/noop';
 import SignUpForm from './SignUpForm';
 
@@ -25,12 +25,33 @@ describe('<SignUpForm />', () => {
     expect(queryByText('Email')).toBeFalsy();
   });
 
+  it('should render create account form', () => {
+    const { queryByText } = renderWithProps({ isSigningIn: false });
+    expect(queryByText('Email')).toBeTruthy();
+  });
+
   it('should render create account form on button click', () => {
     const handleFormSwitch = jest.fn();
     const { getByTestId } = renderWithProps({ handleFormSwitch });
     fireEvent.click(getByTestId('SIGN_UP_MODAL_FORM_BTN'));
-    expect(handleFormSwitch.toHaveBeenCalled()).toBeTruthy();
+    expect(handleFormSwitch).toBeCalled();
   });
 
-  it('should verify input', () => {});
+  it('should verify email input', async () => {
+    const { getByLabelText } = renderWithProps({ isSigningIn: false });
+    await waitFor(() => {
+      fireEvent.blur(getByLabelText('Email'));
+    });
+    expect(getByLabelText('Email').classList.contains('field-error')).toBe(true);
+
+    await waitFor(() => {
+      fireEvent.change(getByLabelText('Email'), { target: { value: 'test' } });
+    });
+    expect(getByLabelText('Email').classList.contains('field-error')).toBe(true);
+
+    await waitFor(() => {
+      fireEvent.change(getByLabelText('Email'), { target: { value: 'test@email.com' } });
+    });
+    expect(getByLabelText('Email').classList.contains('field-error')).toBe(false);
+  });
 });
