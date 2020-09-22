@@ -20,7 +20,7 @@ export default class SignUpModal extends React.Component {
     const { show, handleClose, signUpUser, logInUser } = this.props;
 
     return (
-      <Modal show={show} onHide={handleClose} centered className='sign-up-modal' data-id='SIGN_UP_MODAL'>
+      <Modal show={show} onHide={handleClose} centered className='sign-up-modal' data-testid='SIGN_UP_MODAL'>
         <Modal.Header closeButton>
           <Modal.Title>{isSigningIn ? 'Please Sign In' : 'Create An Account'}</Modal.Title>
         </Modal.Header>

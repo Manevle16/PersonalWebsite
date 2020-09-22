@@ -1,11 +1,10 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react';
 import { noop } from 'lodash/noop';
-import { spy } from 'sinon';
 import SignUpForm from './SignUpForm';
 
 const DEFAULT_PROPS = {
-  isSigningIn: false,
+  isSigningIn: true,
   handleClose: noop,
   signUpUser: noop,
   logInUser: noop,
@@ -13,33 +12,25 @@ const DEFAULT_PROPS = {
 };
 
 const renderWithProps = props => {
-  const container = mount(<SignUpForm {...DEFAULT_PROPS} {...props} />);
+  const component = render(<SignUpForm {...DEFAULT_PROPS} {...props} />);
 
   return {
-    container,
-    getByDataId: dataId => container.find(`[data-id="${dataId}"]`)
+    ...component
   };
 };
 
 describe('<SignUpForm />', () => {
-  it('should render', () => {
-    renderWithProps({ isSigningIn: true });
+  it('should render sign in form', () => {
+    const { queryByText } = renderWithProps();
+    expect(queryByText('Email')).toBeFalsy();
   });
 
-  it('should sign up correctly', async () => {
-    const signUpUser = spy();
-    const { container } = renderWithProps({ signUpUser });
-    container.setProps({
-      initialValues: {
-        email: 'test@test',
-        username: 'test',
-        password: 'testPas',
-        passVerify: 'testPas'
-      }
-    });
-
-    container.find('form').simulate('submit');
-    await setTimeout(() => {}, 0);
-    console.log(signUpUser.called);
+  it('should render create account form on button click', () => {
+    const handleFormSwitch = jest.fn();
+    const { getByTestId } = renderWithProps({ handleFormSwitch });
+    fireEvent.click(getByTestId('SIGN_UP_MODAL_FORM_BTN'));
+    expect(handleFormSwitch.toHaveBeenCalled()).toBeTruthy();
   });
+
+  it('should verify input', () => {});
 });

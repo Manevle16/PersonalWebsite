@@ -1,17 +1,9 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import Website from './Website';
 
 describe('<Website />', () => {
-  const renderWithProps = props => {
-    const container = mount(<Website {...props} />);
-
-    return {
-      container
-    };
-  };
-
   it('Renders correctly', () => {
-    renderWithProps();
+    render(<Website />);
   });
 });

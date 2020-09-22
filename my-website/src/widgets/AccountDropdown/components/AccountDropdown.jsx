@@ -45,12 +45,12 @@ export default class AccountDropdown extends React.Component {
             <NavDropdown.Item href='#fake2'>Logout</NavDropdown.Item>
           </NavDropdown>
         ) : (
-          <Nav.Link onClick={this.onClickSignIn} data-id='SIGN_IN_MENU_BTN'>
+          <Nav.Link onClick={this.onClickSignIn} data-testid='SIGN_IN_MENU_BTN'>
             Sign In
           </Nav.Link>
         )}
         <SignUpModalContainer
-          data-id='SIGN_UP_MODAL'
+          data-testid='SIGN_UP_MODAL'
           show={this.state.showSignUp}
           handleClose={this.handleSignInClose}
         />

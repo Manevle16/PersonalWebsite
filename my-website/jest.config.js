@@ -35,8 +35,6 @@ module.exports = {
   coveragePathIgnorePatterns: [
     'src/widgets/AccountDropdown/containers/AccountDropdownContainer.jsx',
     'src/widgets/AccountDropdown/containers/SignUpModalContainer.jsx',
-    'src/widgets/AccountDropdown/components/SignUpForm.js',
-    'src/widgets/AccountDropdown/components/SignUpForm.test.js',
     'src/widgets/TopMenuBar/containers/TopMenuBarContainer.jsx',
     'src/widgets/components/*',
     'src/mock/store.js',
@@ -44,7 +42,7 @@ module.exports = {
     'index.jsx'
   ],
 
-  testPathIgnorePatterns: ['\\\\node_modules\\\\', 'src/widgets/AccountDropdown/components/SignUpForm.test.js'],
+  testPathIgnorePatterns: ['\\\\node_modules\\\\'],
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
   //   "json",

@@ -5,7 +5,7 @@ import { Formik, Form, Field } from 'formik';
 export default function SignUpForm({ isSigningIn, handleClose, signUpUser, logInUser, handleFormSwitch }) {
   return (
     <Formik
-      data-id='SIGN_UP_MODAL_FORMIK'
+      data-testid='SIGN_UP_MODAL_FORMIK'
       initialValues={{
         email: '',
         username: '',
@@ -50,7 +50,7 @@ export default function SignUpForm({ isSigningIn, handleClose, signUpUser, logIn
               <div className='form-group'>
                 <label>Email</label>
                 <Field
-                  data-id='SIGN_UP_MODAL_EMAIL_INPUT'
+                  data-testid='SIGN_UP_MODAL_EMAIL_INPUT'
                   name='email'
                   className={touched.email && errors.email ? 'field-error' : ''}
                 />
@@ -71,10 +71,10 @@ export default function SignUpForm({ isSigningIn, handleClose, signUpUser, logIn
               </div>
             )}
             <Modal.Footer>
-              <Button variant='secondary' onClick={handleFormSwitch} data-id='SIGN_UP_MODAL_FORM_BTN'>
+              <Button variant='secondary' onClick={handleFormSwitch} data-testid='SIGN_UP_MODAL_FORM_BTN'>
                 {isSigningIn ? 'Create Account Form' : 'Sign In Form'}
               </Button>
-              <Button variant='primary' type='submit' data-id='SIGN_UP_MODAL_SUBMIT_BTN'>
+              <Button variant='primary' type='submit' data-testid='SIGN_UP_MODAL_SUBMIT_BTN'>
                 {isSigningIn ? 'Sign In' : 'Create Account'}
               </Button>
             </Modal.Footer>

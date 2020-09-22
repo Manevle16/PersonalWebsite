@@ -32,7 +32,7 @@ module.exports = function(grunt) {
         livereload: true
       },
       js: {
-        files: ['*.{js,jsx,json}', 'src/**/*.*'],
+        files: ['*.{js,jsx,json}', 'src/**/*.*', '!src/**/*.test.*'],
         tasks: ['webpack'],
         options: {
           interrupt: true
