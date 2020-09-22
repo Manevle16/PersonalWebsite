@@ -1,5 +1,6 @@
 const webpackDev = require('./webpack.dev.js');
 const webpackProd = require('./webpack.prod.js');
+const prettierOptions = require('./prettier.config');
 
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-eslint');
@@ -11,33 +12,25 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     prettier: {
-      options: {
-        singleQuote: true,
-        jsxSingleQuote: true,
-        printWidth: 120,
-        tabWidth: 2,
-        semi: true,
-        trailingComma: 'none',
-        endOfLine: 'crlf'
-      },
+      options: { ...prettierOptions },
       files: {
-        src: ['*.js', 'src/**/*.*']
-      }
+        src: ['*.js', 'src/**/*.*'],
+      },
     },
     eslint: {
-      target: ['*.js', 'src/**/*.*', '!src/**/*.{scss,css}']
+      target: ['*.js', 'src/**/*.*', '!src/**/*.{scss,css}'],
     },
     watch: {
       options: {
-        livereload: true
+        livereload: true,
       },
       js: {
         files: ['*.{js,jsx,json}', 'src/**/*.*', '!src/**/*.test.*'],
         tasks: ['webpack'],
         options: {
-          interrupt: true
-        }
-      }
+          interrupt: true,
+        },
+      },
     },
     connect: {
       server: {
@@ -46,21 +39,21 @@ module.exports = function(grunt) {
           port: 3000,
           base: 'dist/',
           livereload: true,
-          open: true
-        }
-      }
+          open: true,
+        },
+      },
     },
     webpack: {
-      myConfig: process.env.NODE_ENV === 'production' ? webpackProd : webpackDev
+      myConfig: process.env.NODE_ENV === 'production' ? webpackProd : webpackDev,
     },
     githooks: {
       all: {
         'pre-commit': 'prettier eslint',
         options: {
-          dest: '../.git/hooks'
-        }
-      }
-    }
+          dest: '../.git/hooks',
+        },
+      },
+    },
   });
 
   grunt.registerTask('default', ['prettier', 'eslint', 'webpack', 'connect', 'watch']);

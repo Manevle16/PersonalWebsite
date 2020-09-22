@@ -1,3 +1,3 @@
 export default {
-  hostName: 'https://matthewnevleserver.com:3000'
+  hostName: 'https://matthewnevleserver.com:3000',
 };

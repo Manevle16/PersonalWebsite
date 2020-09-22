@@ -4,14 +4,14 @@ import { checkIfLoggedIn } from '../../../actions/accountDropdownActions';
 import { closeError } from '../../../actions/commonActions';
 import { getIsLoggedIn, getError } from '../../../reducers';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isLoggedIn: getIsLoggedIn(state),
-  error: getError(state)
+  error: getError(state),
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   checkIfLoggedIn: (userId, token) => dispatch(checkIfLoggedIn(userId, token)),
-  closeError: () => dispatch(closeError())
+  closeError: () => dispatch(closeError()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginDropdown);

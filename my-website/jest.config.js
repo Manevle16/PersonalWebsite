@@ -29,7 +29,7 @@ module.exports = {
   // A map from regular expressions to paths to transformers
   transform: {
     '^.+\\.js$': 'babel-jest',
-    '^.+\\.jsx$': 'babel-jest'
+    '^.+\\.jsx$': 'babel-jest',
   },
 
   coveragePathIgnorePatterns: [
@@ -39,7 +39,7 @@ module.exports = {
     'src/widgets/components/*',
     'src/mock/store.js',
     'src/config.js',
-    'index.jsx'
+    'index.jsx',
   ],
 
   testPathIgnorePatterns: ['\\\\node_modules\\\\'],
@@ -94,11 +94,11 @@ module.exports = {
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/__mocks__/cssMock.js',
-    '\\.(scss|sass|css)$': 'identity-obj-proxy'
+    '\\.(scss|sass|css)$': 'identity-obj-proxy',
   },
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ['<rootDir>/setupTests.js']
+  setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],

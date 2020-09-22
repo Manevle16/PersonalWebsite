@@ -2,15 +2,16 @@ import { getHostName } from '../reducers';
 
 export function checkIfUserIsLoggedIn({ userId, token }) {
   return fetch(
-    getHostName() + `/users/isLoggedIn?userId=${encodeURIComponent(userId)}&token=${encodeURIComponent(token)}`,
+    getHostName() +
+      `/users/isLoggedIn?userId=${encodeURIComponent(userId)}&token=${encodeURIComponent(token)}`,
     {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    }
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    },
   )
-    .then(res => {
+    .then((res) => {
       if (res.status !== 200) {
         return false;
       } else {
@@ -27,17 +28,17 @@ export function createUser({ email, username, password }) {
   return fetch(getHostName() + '/users/addUser', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(payload)
+    body: JSON.stringify(payload),
   })
-    .then(res => {
+    .then((res) => {
       if (res.status !== 200) {
         return { signedUp: false };
       } else {
-        return res.json().then(body => ({
+        return res.json().then((body) => ({
           ...body,
-          signedUp: true
+          signedUp: true,
         }));
       }
     })
@@ -48,21 +49,24 @@ export function createUser({ email, username, password }) {
 
 export function logUserIn({ username, password }) {
   return fetch(
-    getHostName() + `/users/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
+    getHostName() +
+      `/users/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(
+        password,
+      )}`,
     {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    }
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    },
   )
-    .then(res => {
+    .then((res) => {
       if (res.status !== 200) {
         return { loggedIn: false };
       } else {
-        return res.json().then(body => ({
+        return res.json().then((body) => ({
           ...body,
-          loggedIn: true
+          loggedIn: true,
         }));
       }
     })

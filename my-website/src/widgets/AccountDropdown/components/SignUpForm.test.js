@@ -8,14 +8,14 @@ const DEFAULT_PROPS = {
   handleClose: noop,
   signUpUser: noop,
   logInUser: noop,
-  handleFormSwitch: noop
+  handleFormSwitch: noop,
 };
 
-const renderWithProps = props => {
+const renderWithProps = (props) => {
   const component = render(<SignUpForm {...DEFAULT_PROPS} {...props} />);
 
   return {
-    ...component
+    ...component,
   };
 };
 
@@ -50,7 +50,9 @@ describe('<SignUpForm />', () => {
     expect(getByLabelText('Email').classList.contains('field-error')).toBe(true);
 
     await waitFor(() => {
-      fireEvent.change(getByLabelText('Email'), { target: { value: 'test@email.com' } });
+      fireEvent.change(getByLabelText('Email'), {
+        target: { value: 'test@email.com' },
+      });
     });
     expect(getByLabelText('Email').classList.contains('field-error')).toBe(false);
   });

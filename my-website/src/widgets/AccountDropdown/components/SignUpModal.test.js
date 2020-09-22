@@ -7,16 +7,16 @@ const DEFAULT_PROPS = {
   show: false,
   handleClose: noop,
   signUpUser: noop,
-  logInUser: noop
+  logInUser: noop,
 };
 
-const renderWithProps = props => {
+const renderWithProps = (props) => {
   const container = mount(<SignUpModal {...DEFAULT_PROPS} {...props} />);
 
   return {
     container,
-    getByDataId: dataId => container.find(`[data-id="${dataId}"]`),
-    getInputByDataId: dataId => container.find(`input[data-id="${dataId}"]`)
+    getByDataId: (dataId) => container.find(`[data-id="${dataId}"]`),
+    getInputByDataId: (dataId) => container.find(`input[data-id="${dataId}"]`),
   };
 };
 
@@ -30,13 +30,13 @@ describe('<SignUpModal />', () => {
     expect(
       getByDataId('SIGN_UP_MODAL')
         .at(0)
-        .prop('show')
+        .prop('show'),
     ).toBeTruthy();
     container.setProps({ show: false });
     expect(
       getByDataId('SIGN_UP_MODAL')
         .at(0)
-        .prop('show')
+        .prop('show'),
     ).toBeFalsy();
   });
 

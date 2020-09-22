@@ -8,7 +8,7 @@ export default class AccountDropdown extends React.Component {
   constructor() {
     super();
     this.state = {
-      showSignUp: false
+      showSignUp: false,
     };
   }
 

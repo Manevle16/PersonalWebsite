@@ -7,7 +7,7 @@ describe('accountDropdownApi', () => {
 
       let response = await checkIfUserIsLoggedIn({
         userId: 'mockId',
-        token: 'mockToken'
+        token: 'mockToken',
       });
       expect(response).toBeTruthy();
     });
@@ -17,7 +17,7 @@ describe('accountDropdownApi', () => {
 
       let response = await checkIfUserIsLoggedIn({
         userId: 'mockId',
-        token: 'mockToken'
+        token: 'mockToken',
       });
       expect(response).toBeFalsy();
     });
@@ -27,7 +27,7 @@ describe('accountDropdownApi', () => {
 
       let response = await checkIfUserIsLoggedIn({
         userId: 'mockId',
-        token: 'mockToken'
+        token: 'mockToken',
       });
       expect(response).toBeFalsy();
     });
@@ -35,18 +35,20 @@ describe('accountDropdownApi', () => {
 
   describe('createUser', () => {
     it('should return correct payload on status 200', async () => {
-      fetch.mockResponseOnce(JSON.stringify({ token: 'mockToken', userId: 'mockUser' }), { status: 200 });
+      fetch.mockResponseOnce(JSON.stringify({ token: 'mockToken', userId: 'mockUser' }), {
+        status: 200,
+      });
 
       let response = await createUser({
         email: '',
         username: '',
-        password: ''
+        password: '',
       });
 
       expect(response).toEqual({
         token: 'mockToken',
         userId: 'mockUser',
-        signedUp: true
+        signedUp: true,
       });
     });
 
@@ -56,7 +58,7 @@ describe('accountDropdownApi', () => {
       let response = await createUser({
         email: '',
         username: '',
-        password: ''
+        password: '',
       });
 
       expect(response.signedUp).toBeFalsy();
@@ -68,7 +70,7 @@ describe('accountDropdownApi', () => {
       let response = await createUser({
         email: '',
         username: '',
-        password: ''
+        password: '',
       });
 
       expect(response.signedUp).toBeFalsy();
@@ -77,14 +79,16 @@ describe('accountDropdownApi', () => {
 
   describe('logUserIn', () => {
     it('should return correct payload on status 200', async () => {
-      fetch.mockResponseOnce(JSON.stringify({ token: 'mockToken', userId: 'mockUser' }), { status: 200 });
+      fetch.mockResponseOnce(JSON.stringify({ token: 'mockToken', userId: 'mockUser' }), {
+        status: 200,
+      });
 
       let response = await logUserIn({ username: '', password: '' });
 
       expect(response).toEqual({
         token: 'mockToken',
         userId: 'mockUser',
-        loggedIn: true
+        loggedIn: true,
       });
     });
 

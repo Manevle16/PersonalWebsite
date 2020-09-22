@@ -5,7 +5,7 @@ import {
   IS_NOT_LOGGED_IN,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
-  LOG_IN_FAILURE
+  LOG_IN_FAILURE,
 } from '../actions/actionTypes/accountDropdownActionTypes';
 import { checkIfUserIsLoggedIn, createUser, logUserIn } from '../apis/accountDropdownApi';
 

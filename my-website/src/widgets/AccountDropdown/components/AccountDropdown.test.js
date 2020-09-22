@@ -15,19 +15,19 @@ const mockStore = configureMockStore(middlewares);
 
 const DEFAULT_PROPS = {
   checkIfLoggedIn: noop,
-  isLoggedIn: false
+  isLoggedIn: false,
 };
 
 function renderWithProps(props) {
   const container = mount(
     <Provider store={mockStore(initialStore)}>
       <AccountDropdown {...DEFAULT_PROPS} {...props} />{' '}
-    </Provider>
+    </Provider>,
   );
 
   return {
     container,
-    getLinkByDataId: dataId => container.find(`a[data-id="${dataId}"]`)
+    getLinkByDataId: (dataId) => container.find(`a[data-id="${dataId}"]`),
   };
 }
 
@@ -54,14 +54,14 @@ describe('AccountDropdown', () => {
       container
         .find(`[data-id='SIGN_UP_MODAL']`)
         .at(0)
-        .props().show
+        .props().show,
     ).toEqual(false);
     getLinkByDataId('SIGN_IN_MENU_BTN').simulate('click');
     expect(
       container
         .find(`[data-id='SIGN_UP_MODAL']`)
         .at(0)
-        .props().show
+        .props().show,
     ).toEqual(true);
   });
 

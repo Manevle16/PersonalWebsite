@@ -1,5 +1,9 @@
 import { takeLatest } from 'redux-saga/effects';
-import { CHECK_IF_LOGGED_IN, SIGN_UP_USER, LOG_IN_USER } from '../actions/actionTypes/accountDropdownActionTypes';
+import {
+  CHECK_IF_LOGGED_IN,
+  SIGN_UP_USER,
+  LOG_IN_USER,
+} from '../actions/actionTypes/accountDropdownActionTypes';
 import { checkIfLoggedIn, signUserUp, logInUser } from './accountDropdownSaga';
 
 export default function* rootSaga() {

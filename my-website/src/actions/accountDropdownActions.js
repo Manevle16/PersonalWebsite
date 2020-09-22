@@ -1,12 +1,16 @@
-import { CHECK_IF_LOGGED_IN, SIGN_UP_USER, LOG_IN_USER } from './actionTypes/accountDropdownActionTypes';
+import {
+  CHECK_IF_LOGGED_IN,
+  SIGN_UP_USER,
+  LOG_IN_USER,
+} from './actionTypes/accountDropdownActionTypes';
 
 export const checkIfLoggedIn = (userId, token) => {
   return {
     type: CHECK_IF_LOGGED_IN,
     payload: {
       userId,
-      token
-    }
+      token,
+    },
   };
 };
 
@@ -16,8 +20,8 @@ export const signUpUser = ({ email, username, password }) => {
     payload: {
       email,
       username,
-      password
-    }
+      password,
+    },
   };
 };
 
@@ -26,7 +30,7 @@ export const logInUser = (username, password) => {
     type: LOG_IN_USER,
     payload: {
       username,
-      password
-    }
+      password,
+    },
   };
 };

@@ -1,4 +1,7 @@
-import { CHECK_IF_LOGGED_IN, IS_LOGGED_IN } from '../actions/actionTypes/accountDropdownActionTypes';
+import {
+  CHECK_IF_LOGGED_IN,
+  IS_LOGGED_IN,
+} from '../actions/actionTypes/accountDropdownActionTypes';
 import AccountDropdownReducer from './accountDropdownReducer';
 
 describe('accountDropdownReducer', () => {

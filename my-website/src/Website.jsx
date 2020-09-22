@@ -10,7 +10,7 @@ export default class Website extends React.Component {
   constructor() {
     super();
     this.state = {
-      currentPath: window.location.pathname
+      currentPath: window.location.pathname,
     };
   }
 

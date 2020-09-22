@@ -2,7 +2,13 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { Formik, Form, Field } from 'formik';
 
-export default function SignUpForm({ isSigningIn, handleClose, signUpUser, logInUser, handleFormSwitch }) {
+export default function SignUpForm({
+  isSigningIn,
+  handleClose,
+  signUpUser,
+  logInUser,
+  handleFormSwitch,
+}) {
   return (
     <Formik
       data-testid='SIGN_UP_MODAL_FORMIK'
@@ -10,15 +16,15 @@ export default function SignUpForm({ isSigningIn, handleClose, signUpUser, logIn
         email: '',
         username: '',
         password: '',
-        passVerify: ''
+        passVerify: '',
       }}
-      validate={values => {
+      validate={(values) => {
         const errors = {};
         if (!values.email && !isSigningIn) {
           errors.email = 'Required';
         } else if (
           !/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(
-            values.email
+            values.email,
           ) &&
           !isSigningIn
         ) {
@@ -37,7 +43,7 @@ export default function SignUpForm({ isSigningIn, handleClose, signUpUser, logIn
         }
         return errors;
       }}
-      onSubmit={values => {
+      onSubmit={(values) => {
         handleClose();
         if (!isSigningIn) signUpUser(values);
         else logInUser(values.username, values.password);
@@ -88,7 +94,11 @@ export default function SignUpForm({ isSigningIn, handleClose, signUpUser, logIn
               </div>
             )}
             <Modal.Footer>
-              <Button variant='secondary' onClick={handleFormSwitch} data-testid='SIGN_UP_MODAL_FORM_BTN'>
+              <Button
+                variant='secondary'
+                onClick={handleFormSwitch}
+                data-testid='SIGN_UP_MODAL_FORM_BTN'
+              >
                 {isSigningIn ? 'Create Account Form' : 'Sign In Form'}
               </Button>
               <Button variant='primary' type='submit' data-testid='SIGN_UP_MODAL_SUBMIT_BTN'>

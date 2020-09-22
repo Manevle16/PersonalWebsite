@@ -1,11 +1,11 @@
 export default {
   config: {
-    hostname: 'mockhost.com'
+    hostname: 'mockhost.com',
   },
   topMenuBar: {
-    currentTab: 'home'
+    currentTab: 'home',
   },
   accountDropdown: {
-    isLoggedIn: false
-  }
+    isLoggedIn: false,
+  },
 };

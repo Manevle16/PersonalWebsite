@@ -6,14 +6,14 @@ function AnimatedNavUnderline({ width, position }) {
   const style = useSpring({
     to: {
       width,
-      left: position
-    }
+      left: position,
+    },
   });
   return <animated.div className='nav-underline' style={style}></animated.div>;
 }
 
 AnimatedNavUnderline.propTypes = {
   width: PropTypes.number,
-  position: PropTypes.number
+  position: PropTypes.number,
 };
 export default AnimatedNavUnderline;

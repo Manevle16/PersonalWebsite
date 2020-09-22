@@ -18,7 +18,7 @@ const DEFAULT_PROPS = {
   switchTabHome: noop,
   switchTabAbout: noop,
   switchTabProject: noop,
-  switchTabBlog: noop
+  switchTabBlog: noop,
 };
 
 describe('<TopMenuBar />', () => {
@@ -26,12 +26,12 @@ describe('<TopMenuBar />', () => {
     const container = mount(
       <Provider store={mockStore(initialStore)}>
         <TopMenuBar {...DEFAULT_PROPS} {...props} />
-      </Provider>
+      </Provider>,
     );
 
     return {
       container,
-      getLinkByDataId: dataId => container.find(`a[data-id="${dataId}"]`)
+      getLinkByDataId: (dataId) => container.find(`a[data-id="${dataId}"]`),
     };
   }
 

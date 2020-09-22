@@ -7,7 +7,7 @@ export default class SignUpModal extends React.Component {
     super();
 
     this.state = {
-      isSigningIn: true
+      isSigningIn: true,
     };
   }
 
@@ -20,13 +20,19 @@ export default class SignUpModal extends React.Component {
     const { show, handleClose, signUpUser, logInUser } = this.props;
 
     return (
-      <Modal show={show} onHide={handleClose} centered className='sign-up-modal' data-testid='SIGN_UP_MODAL'>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        centered
+        className='sign-up-modal'
+        data-testid='SIGN_UP_MODAL'
+      >
         <Modal.Header closeButton>
           <Modal.Title>{isSigningIn ? 'Please Sign In' : 'Create An Account'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          *I will not be using your data for any monetary reasons. I made account support on my website for fun.
-          Commenting on the blog is possible as a guest.
+          *I will not be using your data for any monetary reasons. I made account support on my
+          website for fun. Commenting on the blog is possible as a guest.
         </Modal.Body>
         <SignUpForm
           isSigningIn={isSigningIn}
