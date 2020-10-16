@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import TopMenuBar from '../components/TopMenuBar.jsx';
+import TopMenuBar from '../components/TopMenuBar';
 import { getCurrentTab } from '../../../reducers';
 import {
   switchTabHome,

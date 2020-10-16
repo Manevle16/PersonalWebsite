@@ -3,10 +3,10 @@ import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import { noop } from 'lodash';
 import { spy } from 'sinon';
-import TopMenuBar from './TopMenuBar';
 
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import TopMenuBar from './TopMenuBar';
 import initialStore from '../../../mock/store';
 
 const middlewares = [thunk];
@@ -40,7 +40,7 @@ describe('<TopMenuBar />', () => {
     renderWithProps({ currentPath: '/projects' });
   });
 
-  //Test clicking of tabs
+  // Test clicking of tabs
   it('should call switchTabHome when home tab clicked', () => {
     const switchTabHome = spy();
     const { getLinkByDataId } = renderWithProps({ switchTabHome });

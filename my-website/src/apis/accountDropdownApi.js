@@ -2,8 +2,9 @@ import { getHostName } from '../reducers';
 
 export function checkIfUserIsLoggedIn({ userId, token }) {
   return fetch(
-    getHostName() +
-      `/users/isLoggedIn?userId=${encodeURIComponent(userId)}&token=${encodeURIComponent(token)}`,
+    `${getHostName()}/users/isLoggedIn?userId=${encodeURIComponent(
+      userId,
+    )}&token=${encodeURIComponent(token)}`,
     {
       method: 'GET',
       headers: {
@@ -14,18 +15,15 @@ export function checkIfUserIsLoggedIn({ userId, token }) {
     .then((res) => {
       if (res.status !== 200) {
         return false;
-      } else {
-        return true;
       }
+      return true;
     })
-    .catch(() => {
-      return false;
-    });
+    .catch(() => false);
 }
 
 export function createUser({ email, username, password }) {
-  let payload = { email, username, password };
-  return fetch(getHostName() + '/users/addUser', {
+  const payload = { email, username, password };
+  return fetch(`${getHostName()}/users/addUser`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -35,24 +33,20 @@ export function createUser({ email, username, password }) {
     .then((res) => {
       if (res.status !== 200) {
         return { signedUp: false };
-      } else {
-        return res.json().then((body) => ({
-          ...body,
-          signedUp: true,
-        }));
       }
+      return res.json().then((body) => ({
+        ...body,
+        signedUp: true,
+      }));
     })
-    .catch(() => {
-      return { signedUp: false };
-    });
+    .catch(() => ({ signedUp: false }));
 }
 
 export function logUserIn({ username, password }) {
   return fetch(
-    getHostName() +
-      `/users/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(
-        password,
-      )}`,
+    `${getHostName()}/users/login?username=${encodeURIComponent(
+      username,
+    )}&password=${encodeURIComponent(password)}`,
     {
       method: 'GET',
       headers: {
@@ -63,14 +57,11 @@ export function logUserIn({ username, password }) {
     .then((res) => {
       if (res.status !== 200) {
         return { loggedIn: false };
-      } else {
-        return res.json().then((body) => ({
-          ...body,
-          loggedIn: true,
-        }));
       }
+      return res.json().then((body) => ({
+        ...body,
+        loggedIn: true,
+      }));
     })
-    .catch(() => {
-      return { loggedIn: false };
-    });
+    .catch(() => ({ loggedIn: false }));
 }

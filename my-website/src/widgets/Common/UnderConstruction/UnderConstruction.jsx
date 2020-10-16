@@ -8,7 +8,9 @@ export default function UnderConstruction() {
         src='https://d3df78u115mwer.cloudfront.net/random/platelets.png'
         alt='under construction anime girl'
       />
-      <label>This part of the site is still under construction and has not been built yet</label>
+      <div className='warning-text'>
+        This part of the site is still under construction and has not been built yet
+      </div>
     </div>
   );
 }

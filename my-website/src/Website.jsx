@@ -1,7 +1,7 @@
 import React from 'react';
-import store from './store';
 import { Provider } from 'react-redux';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import store from './store';
 import './sass/main.scss';
 import TopMenuBarWidgetContainer from './widgets/TopMenuBar/containers/TopMenuBarContainer';
 import UnderConstruction from './widgets/Common/UnderConstruction/UnderConstruction';
@@ -15,10 +15,12 @@ export default class Website extends React.Component {
   }
 
   render() {
+    const { currentPath } = this.state;
+
     return (
       <Provider store={store}>
         <div className='website'>
-          <TopMenuBarWidgetContainer currentPath={this.state.currentPath} />
+          <TopMenuBarWidgetContainer currentPath={currentPath} />
           <Router>
             <Switch>
               <Route exact path='/'>

@@ -1,8 +1,9 @@
 import React from 'react';
+import { func } from 'prop-types';
 import { Modal } from 'react-bootstrap';
 import SignUpForm from './SignUpForm';
 
-export default class SignUpModal extends React.Component {
+class SignUpModal extends React.Component {
   constructor() {
     super();
 
@@ -12,7 +13,8 @@ export default class SignUpModal extends React.Component {
   }
 
   handleFormSwitch = () => {
-    this.setState({ isSigningIn: !this.state.isSigningIn });
+    const { isSigningIn } = this.state;
+    this.setState({ isSigningIn: !isSigningIn });
   };
 
   render() {
@@ -45,3 +47,12 @@ export default class SignUpModal extends React.Component {
     );
   }
 }
+
+SignUpModal.propTypes = {
+  show: func.isRequired,
+  handleClose: func.isRequired,
+  signUpUser: func.isRequired,
+  logInUser: func.isRequired,
+};
+
+export default SignUpModal;

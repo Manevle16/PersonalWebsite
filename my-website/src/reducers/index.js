@@ -10,16 +10,15 @@ export default combineReducers({
   config,
 });
 
-//Config Selectors
-export const getConfig = () => config;
-export const getHostName = createSelector(getConfig, (config) => config.hostName);
+// Config Selectors
+export const getHostName = () => config.hostName;
 
-//TopMenuBar Selectors
+// TopMenuBar Selectors
 export const getTopMenuBar = (state) => state.topMenuBar;
 
 export const getCurrentTab = createSelector(getTopMenuBar, (topMenuBar) => topMenuBar.currentTab);
 
-//Account Dropdown Selectors
+// Account Dropdown Selectors
 export const getAccountDropdown = (state) => state.accountDropdown;
 export const getIsLoggedIn = createSelector(
   getAccountDropdown,

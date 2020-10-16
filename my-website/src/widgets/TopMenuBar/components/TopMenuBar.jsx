@@ -1,9 +1,10 @@
 import React from 'react';
+import { string, func } from 'prop-types';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import AccountDropdown from '../../AccountDropdown/containers/AccountDropdownContainer';
 import AnimatedNavUnderline from './AnimatedNavUnderline';
 
-export default class TopMenuBar extends React.Component {
+class TopMenuBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,51 +16,14 @@ export default class TopMenuBar extends React.Component {
     this.aboutRef = React.createRef();
     this.blogRef = React.createRef();
     this.projectsRef = React.createRef();
-    window.addEventListener('resize', this.resize);
-    const timer = () =>
-      setTimeout(() => {
-        this.switchTabs(this.props.currentPath);
-      }, 0);
-    timer();
-    clearTimeout(timer);
   }
-
-  resize = () => {
-    switch (this.props.currentTab) {
-      case '':
-        this.setState({
-          underlineWidth: this.homeRef.current.offsetWidth,
-          underlinePos: this.homeRef.current.offsetLeft,
-        });
-        return;
-      case 'about':
-        this.setState({
-          underlineWidth: this.aboutRef.current.offsetWidth,
-          underlinePos: this.aboutRef.current.offsetLeft,
-        });
-        return;
-      case 'blog':
-        this.setState({
-          underlineWidth: this.blogRef.current.offsetWidth,
-          underlinePos: this.blogRef.current.offsetLeft,
-        });
-        return;
-      case 'projects':
-        this.setState({
-          underlineWidth: this.projectsRef.current.offsetWidth,
-          underlinePos: this.projectsRef.current.offsetLeft,
-        });
-        return;
-      default:
-        return;
-    }
-  };
 
   componentDidMount() {
     window.addEventListener('resize', this.resize);
+    const { currentPath } = this.props;
 
-    let init = setInterval(() => {
-      this.switchTabs(this.props.currentPath);
+    const init = setInterval(() => {
+      this.switchTabs(currentPath);
     }, 100);
     setTimeout(() => {
       clearInterval(init);
@@ -70,16 +34,48 @@ export default class TopMenuBar extends React.Component {
     window.removeEventListener('resize', this.resize);
   }
 
+  resize = () => {
+    const { currentTab } = this.props;
+    switch (currentTab) {
+      case '':
+        this.setState({
+          underlineWidth: this.homeRef.current.offsetWidth,
+          underlinePos: this.homeRef.current.offsetLeft,
+        });
+        break;
+      case 'about':
+        this.setState({
+          underlineWidth: this.aboutRef.current.offsetWidth,
+          underlinePos: this.aboutRef.current.offsetLeft,
+        });
+        break;
+      case 'blog':
+        this.setState({
+          underlineWidth: this.blogRef.current.offsetWidth,
+          underlinePos: this.blogRef.current.offsetLeft,
+        });
+        break;
+      case 'projects':
+        this.setState({
+          underlineWidth: this.projectsRef.current.offsetWidth,
+          underlinePos: this.projectsRef.current.offsetLeft,
+        });
+        break;
+      default:
+        break;
+    }
+  };
+
   onTabClick = (eventKey, e) => {
     e.preventDefault();
-    window.history.pushState({}, eventKey, eventKey); //Changes url in browser without refreshing page
+    window.history.pushState({}, eventKey, eventKey); // Changes url in browser without refreshing page
     this.switchTabs(eventKey);
   };
 
+  // eslint-disable-next-line consistent-return
   switchTabs = (tab) => {
     const { switchTabHome, switchTabAbout, switchTabProject, switchTabBlog } = this.props;
-    console.log(this.homeRef.current.offsetLeft);
-    // eslint-disable-next-line
+
     switch (tab) {
       case '/':
         this.setState({
@@ -105,24 +101,24 @@ export default class TopMenuBar extends React.Component {
           underlinePos: this.projectsRef.current.offsetLeft,
         });
         return switchTabProject();
+      default:
+        break;
     }
   };
 
   render() {
     const { currentTab } = this.props;
+    const { underlineWidth, underlinePos } = this.state;
     return (
       <div className='top-menu-bar'>
         <Navbar expand='sm'>
           <Navbar.Brand>MN</Navbar.Brand>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse className='justify-content-end'>
-            {this.state.underlineWidth && this.state.underlinePos ? (
-              <AnimatedNavUnderline
-                width={this.state.underlineWidth}
-                position={this.state.underlinePos}
-              />
+            {underlineWidth && underlinePos ? (
+              <AnimatedNavUnderline width={underlineWidth} position={underlinePos} />
             ) : null}
-            <Nav onSelect={this.onTabClick} variant='tabs' activeKey={'/' + currentTab}>
+            <Nav onSelect={this.onTabClick} variant='tabs' activeKey={`/${currentTab}`}>
               <Nav.Item ref={this.homeRef}>
                 <Nav.Link href='/' data-testid='TOP_MENU_HOME_BTN' eventKey='/'>
                   Home
@@ -153,3 +149,14 @@ export default class TopMenuBar extends React.Component {
     );
   }
 }
+
+TopMenuBar.propTypes = {
+  currentTab: string.isRequired,
+  currentPath: string.isRequired,
+  switchTabHome: func.isRequired,
+  switchTabAbout: func.isRequired,
+  switchTabBlog: func.isRequired,
+  switchTabProject: func.isRequired,
+};
+
+export default TopMenuBar;

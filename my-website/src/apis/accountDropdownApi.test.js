@@ -5,7 +5,7 @@ describe('accountDropdownApi', () => {
     it('should return true on  status 200', async () => {
       fetch.mockResponseOnce(JSON.stringify({}), { status: 200 });
 
-      let response = await checkIfUserIsLoggedIn({
+      const response = await checkIfUserIsLoggedIn({
         userId: 'mockId',
         token: 'mockToken',
       });
@@ -15,7 +15,7 @@ describe('accountDropdownApi', () => {
     it('should return false on status 400', async () => {
       fetch.mockResponseOnce(JSON.stringify({}), { status: 400 });
 
-      let response = await checkIfUserIsLoggedIn({
+      const response = await checkIfUserIsLoggedIn({
         userId: 'mockId',
         token: 'mockToken',
       });
@@ -25,7 +25,7 @@ describe('accountDropdownApi', () => {
     it('should return false on error', async () => {
       fetch.mockReject(new Error('fake err'));
 
-      let response = await checkIfUserIsLoggedIn({
+      const response = await checkIfUserIsLoggedIn({
         userId: 'mockId',
         token: 'mockToken',
       });
@@ -39,7 +39,7 @@ describe('accountDropdownApi', () => {
         status: 200,
       });
 
-      let response = await createUser({
+      const response = await createUser({
         email: '',
         username: '',
         password: '',
@@ -55,7 +55,7 @@ describe('accountDropdownApi', () => {
     it('should return false on status 400', async () => {
       fetch.mockResponseOnce(JSON.stringify({}), { status: 400 });
 
-      let response = await createUser({
+      const response = await createUser({
         email: '',
         username: '',
         password: '',
@@ -67,7 +67,7 @@ describe('accountDropdownApi', () => {
     it('should return false on error', async () => {
       fetch.mockReject();
 
-      let response = await createUser({
+      const response = await createUser({
         email: '',
         username: '',
         password: '',
@@ -83,7 +83,7 @@ describe('accountDropdownApi', () => {
         status: 200,
       });
 
-      let response = await logUserIn({ username: '', password: '' });
+      const response = await logUserIn({ username: '', password: '' });
 
       expect(response).toEqual({
         token: 'mockToken',
@@ -95,7 +95,7 @@ describe('accountDropdownApi', () => {
     it('should return false on status 400', async () => {
       fetch.mockResponseOnce(JSON.stringify({}), { status: 400 });
 
-      let response = await logUserIn({ username: '', password: '' });
+      const response = await logUserIn({ username: '', password: '' });
 
       expect(response.loggedIn).toBeFalsy();
     });
@@ -103,7 +103,7 @@ describe('accountDropdownApi', () => {
     it('should return false on error', async () => {
       fetch.mockReject();
 
-      let response = await logUserIn({ username: '', password: '' });
+      const response = await logUserIn({ username: '', password: '' });
 
       expect(response.loggedIn).toBeFalsy();
     });

@@ -9,11 +9,11 @@ function AnimatedNavUnderline({ width, position }) {
       left: position,
     },
   });
-  return <animated.div className='nav-underline' style={style}></animated.div>;
+  return <animated.div className='nav-underline' style={style} />;
 }
 
 AnimatedNavUnderline.propTypes = {
-  width: PropTypes.number,
-  position: PropTypes.number,
+  width: PropTypes.number.isRequired,
+  position: PropTypes.number.isRequired,
 };
 export default AnimatedNavUnderline;

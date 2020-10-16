@@ -2,6 +2,7 @@ const webpackDev = require('./webpack.dev.js');
 const webpackProd = require('./webpack.prod.js');
 const prettierOptions = require('./prettier.config');
 
+// eslint-disable-next-line func-names
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-prettier');

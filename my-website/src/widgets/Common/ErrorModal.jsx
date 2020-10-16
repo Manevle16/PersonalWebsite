@@ -1,7 +1,8 @@
 import React from 'react';
+import { func, bool, string } from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
 
-export default function ErrorModal({ show, body, onHide }) {
+function ErrorModal({ show, body, onHide }) {
   return (
     <Modal show={show} onHide={onHide} dialogClassName='error-modal'>
       <Modal.Header>
@@ -14,3 +15,11 @@ export default function ErrorModal({ show, body, onHide }) {
     </Modal>
   );
 }
+
+ErrorModal.propTypes = {
+  show: bool.isRequired,
+  body: string.isRequired,
+  onHide: func.isRequired,
+};
+
+export default ErrorModal;
