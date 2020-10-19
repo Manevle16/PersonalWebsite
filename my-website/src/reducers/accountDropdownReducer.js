@@ -13,6 +13,7 @@ const initialState = {
   isError: false,
   errorBody: '',
 };
+
 export default (state = initialState, { type }) => {
   switch (type) {
     case IS_LOGGED_IN:

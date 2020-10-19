@@ -7,5 +7,7 @@ export default {
   },
   accountDropdown: {
     isLoggedIn: false,
+    isError: false,
+    errorBody: '',
   },
 };

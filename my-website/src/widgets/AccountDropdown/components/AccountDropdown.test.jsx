@@ -17,6 +17,7 @@ const DEFAULT_PROPS = {
     isError: false,
     errorBody: '',
   },
+  closeError: () => {},
   checkIfLoggedIn: () => {},
   resize: () => {},
 };

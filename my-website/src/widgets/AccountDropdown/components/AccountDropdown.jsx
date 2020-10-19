@@ -66,7 +66,8 @@ class AccountDropdown extends React.Component {
 
 AccountDropdown.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
-  error: PropTypes.objectOf({}).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  error: PropTypes.object.isRequired,
   closeError: PropTypes.func.isRequired,
   checkIfLoggedIn: PropTypes.func.isRequired,
   resize: PropTypes.func.isRequired,

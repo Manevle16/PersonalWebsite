@@ -1,5 +1,5 @@
 import React from 'react';
-import { func } from 'prop-types';
+import { func, bool } from 'prop-types';
 import { Modal } from 'react-bootstrap';
 import SignUpForm from './SignUpForm';
 
@@ -19,7 +19,7 @@ class SignUpModal extends React.Component {
 
   render() {
     const { isSigningIn } = this.state;
-    const { show, handleClose, signUpUser, logInUser } = this.props;
+    const { show, handleClose, signUpUser, loginUser } = this.props;
 
     return (
       <Modal
@@ -40,7 +40,7 @@ class SignUpModal extends React.Component {
           isSigningIn={isSigningIn}
           handleClose={handleClose}
           signUpUser={signUpUser}
-          logInUser={logInUser}
+          loginUser={loginUser}
           handleFormSwitch={this.handleFormSwitch}
         />
       </Modal>
@@ -49,10 +49,10 @@ class SignUpModal extends React.Component {
 }
 
 SignUpModal.propTypes = {
-  show: func.isRequired,
+  show: bool.isRequired,
   handleClose: func.isRequired,
   signUpUser: func.isRequired,
-  logInUser: func.isRequired,
+  loginUser: func.isRequired,
 };
 
 export default SignUpModal;

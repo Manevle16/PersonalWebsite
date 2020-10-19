@@ -1,8 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { mount } from 'enzyme';
-import { noop } from 'lodash';
-import { spy } from 'sinon';
+import { render, fireEvent } from '@testing-library/react';
 
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -15,23 +13,22 @@ const mockStore = configureMockStore(middlewares);
 const DEFAULT_PROPS = {
   currentTab: '',
   currentPath: '/',
-  switchTabHome: noop,
-  switchTabAbout: noop,
-  switchTabProject: noop,
-  switchTabBlog: noop,
+  switchTabHome: () => {},
+  switchTabAbout: () => {},
+  switchTabProject: () => {},
+  switchTabBlog: () => {},
 };
 
 describe('<TopMenuBar />', () => {
   function renderWithProps(props) {
-    const container = mount(
+    const container = render(
       <Provider store={mockStore(initialStore)}>
         <TopMenuBar {...DEFAULT_PROPS} {...props} />
       </Provider>,
     );
 
     return {
-      container,
-      getLinkByDataId: (dataId) => container.find(`a[data-id="${dataId}"]`),
+      ...container,
     };
   }
 
@@ -42,37 +39,38 @@ describe('<TopMenuBar />', () => {
 
   // Test clicking of tabs
   it('should call switchTabHome when home tab clicked', () => {
-    const switchTabHome = spy();
-    const { getLinkByDataId } = renderWithProps({ switchTabHome });
-    getLinkByDataId('TOP_MENU_HOME_BTN').simulate('click');
-    expect(switchTabHome.called).toEqual(true);
+    const switchTabHome = jest.fn();
+    const { getByTestId } = renderWithProps({ switchTabHome });
+    fireEvent.click(getByTestId('TOP_MENU_HOME_BTN'));
+    expect(switchTabHome).toBeCalled();
   });
 
   it('should call switchTabAbout when about tab clicked', () => {
-    const switchTabAbout = spy();
-    const { getLinkByDataId } = renderWithProps({ switchTabAbout });
-    getLinkByDataId('TOP_MENU_ABOUT_BTN').simulate('click');
-    expect(switchTabAbout.called).toEqual(true);
+    const switchTabAbout = jest.fn();
+    const { getByTestId } = renderWithProps({ switchTabAbout });
+    fireEvent.click(getByTestId('TOP_MENU_ABOUT_BTN'));
+    expect(switchTabAbout).toBeCalled();
   });
 
   it('should call switchTabProject when about tab clicked', () => {
-    const switchTabProject = spy();
-    const { getLinkByDataId } = renderWithProps({ switchTabProject });
-    getLinkByDataId('TOP_MENU_PROJECT_BTN').simulate('click');
-    expect(switchTabProject.called).toEqual(true);
+    const switchTabProject = jest.fn();
+    const { getByTestId } = renderWithProps({ switchTabProject });
+    fireEvent.click(getByTestId('TOP_MENU_PROJECT_BTN'));
+    expect(switchTabProject).toBeCalled();
   });
 
   it('should call switchTabBlog when about tab clicked', () => {
-    const switchTabBlog = spy();
-    const { getLinkByDataId } = renderWithProps({ switchTabBlog });
-    getLinkByDataId('TOP_MENU_BLOG_BTN').simulate('click');
-    expect(switchTabBlog.called).toEqual(true);
+    const switchTabBlog = jest.fn();
+    const { getByTestId } = renderWithProps({ switchTabBlog });
+    fireEvent.click(getByTestId('TOP_MENU_BLOG_BTN'));
+    expect(switchTabBlog).toBeCalled();
   });
 
-  it('should set currentTab to about on mount', () => {
-    const { container } = renderWithProps({ currentPath: '/about' });
+  it('should set currentTab to about on mount', async () => {
+    const switchTabAbout = jest.fn();
+    renderWithProps({ currentPath: '/about', switchTabAbout });
     setTimeout(() => {
-      expect(container.prop('currentTab')).toEqual('about');
+      expect(switchTabAbout).toBeCalled();
     }, 0);
   });
 });

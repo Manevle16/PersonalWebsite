@@ -21,7 +21,7 @@ export const signUpUser = ({ email, username, password }) => ({
   },
 });
 
-export const logInUser = (username, password) => ({
+export const loginUser = (username, password) => ({
   type: LOG_IN_USER,
   payload: {
     username,

@@ -40,7 +40,7 @@ export function* signUserUp(action) {
   }
 }
 
-export function* logInUser(action) {
+export function* loginUser(action) {
   try {
     const { username, password } = action.payload;
     const response = yield call(logUserIn, { username, password });
