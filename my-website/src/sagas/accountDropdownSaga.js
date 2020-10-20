@@ -46,7 +46,7 @@ export function* loginUser(action) {
     const response = yield call(logUserIn, { username, password });
 
     if (!response.loggedIn) {
-      yield put({ type: LOG_IN_FAILURE });
+      yield put({ type: IS_NOT_LOGGED_IN });
     } else {
       cookie.save('token', response.token, { path: '/' });
       cookie.save('userId', response.userId, { path: '/' });
