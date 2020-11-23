@@ -131,6 +131,6 @@ describe('<SignUpForm />', () => {
           username: 'test-user',
         },
       ]);
-    });    
+    });
   });
 });
