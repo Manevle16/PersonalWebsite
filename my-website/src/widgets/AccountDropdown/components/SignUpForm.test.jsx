@@ -110,8 +110,8 @@ describe('<SignUpForm />', () => {
       fireEvent.change(getByLabelText('Password'), { target: { value: 'test-pass' } });
       fireEvent.change(getByLabelText('Username'), { target: { value: 'test-user' } });
       fireEvent.click(getByTestId('SIGN_UP_MODAL_SUBMIT_BTN'));
+      expect(loginUser.mock.calls[0]).toEqual(['test-user', 'test-pass']);
     });
-    expect(loginUser.mock.calls[0]).toEqual(['test-user', 'test-pass']);
   });
 
   it('should submit correct values on sign up', async () => {
@@ -123,15 +123,14 @@ describe('<SignUpForm />', () => {
       fireEvent.change(getByLabelText('Username'), { target: { value: 'test-user' } });
       fireEvent.change(getByLabelText('Retype Password'), { target: { value: 'test-pass' } });
       fireEvent.click(getByTestId('SIGN_UP_MODAL_SUBMIT_BTN'));
-    });
-
-    expect(signUpUser.mock.calls[0]).toEqual([
-      {
-        email: 'test@email.com',
-        passVerify: 'test-pass',
-        password: 'test-pass',
-        username: 'test-user',
-      },
-    ]);
+      expect(signUpUser.mock.calls[0]).toEqual([
+        {
+          email: 'test@email.com',
+          passVerify: 'test-pass',
+          password: 'test-pass',
+          username: 'test-user',
+        },
+      ]);
+    });    
   });
 });

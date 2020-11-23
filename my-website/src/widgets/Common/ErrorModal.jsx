@@ -10,7 +10,9 @@ function ErrorModal({ show, body, onHide }) {
       </Modal.Header>
       <Modal.Body>{body}</Modal.Body>
       <Modal.Footer>
-        <Button onClick={onHide}>Close</Button>
+        <Button onClick={onHide} data-testid='ERROR_MODAL_CLOSE_BTN'>
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );

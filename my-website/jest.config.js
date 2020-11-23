@@ -38,6 +38,7 @@ module.exports = {
     'src/widgets/AccountDropdown/containers/SignUpModalContainer.jsx',
     'src/widgets/TopMenuBar/containers/TopMenuBarContainer.jsx',
     'src/widgets/components/*',
+    'src/actions/commonActions.js',
     'src/mock/store.js',
     'src/config.js',
     'index.jsx',
@@ -148,7 +149,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  // testEnvironment: "jest-environment-jsdom",
+  testEnvironment: 'jest-environment-jsdom-sixteen',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},

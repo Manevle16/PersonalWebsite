@@ -77,4 +77,17 @@ describe('AccountDropdown', () => {
     rerender({ isLoggedIn: true });
     expect(resize).toBeCalledTimes(1);
   });
+
+  it('should close hide error when error modal is dismissed', async () => {
+    const closeError = jest.fn();
+    const { getByTestId, getByText } = renderWithProps({
+      error: { isError: true, errorBody: 'mock error' },
+      closeError,
+    });
+    getByText('mock error');
+    await waitFor(() => {
+      fireEvent.click(getByTestId('ERROR_MODAL_CLOSE_BTN'));
+      expect(closeError).toBeCalledTimes(1);
+    });
+  });
 });
