@@ -28,6 +28,6 @@ module.exports = {
     indent: ['error', 2, { SwitchCase: 1 }],
     'linebreak-style': ['error', 'windows'],
     semi: ['error', 'always'],
-    'react/prop-types': 0
+    'react/prop-types': 1
   }
 };
