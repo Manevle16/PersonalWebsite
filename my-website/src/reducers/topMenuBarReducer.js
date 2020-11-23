@@ -2,11 +2,11 @@ import {
   SWITCH_TAB_HOME,
   SWITCH_TAB_ABOUT,
   SWITCH_TAB_PROJECT,
-  SWITCH_TAB_BLOG
+  SWITCH_TAB_BLOG,
 } from '../actions/actionTypes/topMenuBarActionTypes';
 
 const initialState = {
-  currentTab: ''
+  currentTab: '',
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -16,7 +16,7 @@ export default (state = initialState, { type, payload }) => {
     case SWITCH_TAB_PROJECT:
     case SWITCH_TAB_BLOG:
       return {
-        currentTab: payload
+        currentTab: payload,
       };
     default:
       return state;

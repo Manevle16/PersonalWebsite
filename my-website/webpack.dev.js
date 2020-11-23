@@ -8,7 +8,7 @@ module.exports = merge(common, {
     port: 3000,
     open: true,
     stats: {
-      colors: true
-    }
-  }
+      colors: true,
+    },
+  },
 });

@@ -1,29 +1,32 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavDropdown, Nav } from 'react-bootstrap';
 import cookie from 'react-cookies';
 import SignUpModalContainer from '../containers/SignUpModalContainer';
 import ErrorModal from '../../Common/ErrorModal';
 
-export default class AccountDropdown extends React.Component {
+class AccountDropdown extends React.Component {
   constructor() {
     super();
     this.state = {
-      showSignUp: false
+      showSignUp: false,
     };
   }
 
   componentDidMount() {
+    const { checkIfLoggedIn } = this.props;
     const userId = cookie.load('userId');
     const token = cookie.load('token');
     if (userId && token) {
-      this.props.checkIfLoggedIn(userId, token);
+      checkIfLoggedIn(userId, token);
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.isLoggedIn !== this.props.isLoggedIn) {
-      //                  Update the nav underline position if size of this widget changes
-      this.props.resize();
+    const { isLoggedIn, resize } = this.props;
+    if (prevProps.isLoggedIn !== isLoggedIn) {
+      // Update the nav underline position if size of this widget changes
+      resize();
     }
   }
 
@@ -37,6 +40,7 @@ export default class AccountDropdown extends React.Component {
 
   render() {
     const { isLoggedIn, error, closeError } = this.props;
+    const { showSignUp } = this.state;
     return (
       <div className='account-dropdown'>
         {isLoggedIn ? (
@@ -45,13 +49,13 @@ export default class AccountDropdown extends React.Component {
             <NavDropdown.Item href='#fake2'>Logout</NavDropdown.Item>
           </NavDropdown>
         ) : (
-          <Nav.Link onClick={this.onClickSignIn} data-id='SIGN_IN_MENU_BTN'>
+          <Nav.Link onClick={this.onClickSignIn} data-testid='SIGN_IN_MENU_BTN'>
             Sign In
           </Nav.Link>
         )}
         <SignUpModalContainer
-          data-id='SIGN_UP_MODAL'
-          show={this.state.showSignUp}
+          data-testid='SIGN_UP_MODAL'
+          show={showSignUp}
           handleClose={this.handleSignInClose}
         />
         <ErrorModal show={error.isError} body={error.errorBody} onHide={closeError} />
@@ -59,3 +63,14 @@ export default class AccountDropdown extends React.Component {
     );
   }
 }
+
+AccountDropdown.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  error: PropTypes.object.isRequired,
+  closeError: PropTypes.func.isRequired,
+  checkIfLoggedIn: PropTypes.func.isRequired,
+  resize: PropTypes.func.isRequired,
+};
+
+export default AccountDropdown;

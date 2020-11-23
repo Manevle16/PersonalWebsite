@@ -1,33 +1,40 @@
+import fetch from 'fetch-mock-jest';
 import { checkIfUserIsLoggedIn, createUser, logUserIn } from './accountDropdownApi';
 
 describe('accountDropdownApi', () => {
+  beforeEach(() => {
+    fetch.mockReset();
+  });
+
   describe('checkIfUserIsLoggedIn', () => {
     it('should return true on  status 200', async () => {
-      fetch.mockResponseOnce(JSON.stringify({}), { status: 200 });
+      fetch.any({ status: 200 });
 
-      let response = await checkIfUserIsLoggedIn({
+      const response = await checkIfUserIsLoggedIn({
         userId: 'mockId',
-        token: 'mockToken'
+        token: 'mockToken',
       });
       expect(response).toBeTruthy();
     });
 
     it('should return false on status 400', async () => {
-      fetch.mockResponseOnce(JSON.stringify({}), { status: 400 });
+      fetch.any({ status: 400 });
 
-      let response = await checkIfUserIsLoggedIn({
+      const response = await checkIfUserIsLoggedIn({
         userId: 'mockId',
-        token: 'mockToken'
+        token: 'mockToken',
       });
       expect(response).toBeFalsy();
     });
 
     it('should return false on error', async () => {
-      fetch.mockReject(new Error('fake err'));
+      fetch.any({
+        throws: new Error('fake err'),
+      });
 
-      let response = await checkIfUserIsLoggedIn({
+      const response = await checkIfUserIsLoggedIn({
         userId: 'mockId',
-        token: 'mockToken'
+        token: 'mockToken',
       });
       expect(response).toBeFalsy();
     });
@@ -35,40 +42,43 @@ describe('accountDropdownApi', () => {
 
   describe('createUser', () => {
     it('should return correct payload on status 200', async () => {
-      fetch.mockResponseOnce(JSON.stringify({ token: 'mockToken', userId: 'mockUser' }), { status: 200 });
+      fetch.any({
+        status: 200,
+        body: { token: 'mockToken', userId: 'mockUser' },
+      });
 
-      let response = await createUser({
+      const response = await createUser({
         email: '',
         username: '',
-        password: ''
+        password: '',
       });
 
       expect(response).toEqual({
         token: 'mockToken',
         userId: 'mockUser',
-        signedUp: true
+        signedUp: true,
       });
     });
 
     it('should return false on status 400', async () => {
-      fetch.mockResponseOnce(JSON.stringify({}), { status: 400 });
+      fetch.any({ status: 400 });
 
-      let response = await createUser({
+      const response = await createUser({
         email: '',
         username: '',
-        password: ''
+        password: '',
       });
 
       expect(response.signedUp).toBeFalsy();
     });
 
     it('should return false on error', async () => {
-      fetch.mockReject();
+      fetch.any({ throws: new Error('fake err') });
 
-      let response = await createUser({
+      const response = await createUser({
         email: '',
         username: '',
-        password: ''
+        password: '',
       });
 
       expect(response.signedUp).toBeFalsy();
@@ -77,29 +87,32 @@ describe('accountDropdownApi', () => {
 
   describe('logUserIn', () => {
     it('should return correct payload on status 200', async () => {
-      fetch.mockResponseOnce(JSON.stringify({ token: 'mockToken', userId: 'mockUser' }), { status: 200 });
+      fetch.any({
+        status: 200,
+        body: { token: 'mockToken', userId: 'mockUser' },
+      });
 
-      let response = await logUserIn({ username: '', password: '' });
+      const response = await logUserIn({ username: '', password: '' });
 
       expect(response).toEqual({
         token: 'mockToken',
         userId: 'mockUser',
-        loggedIn: true
+        loggedIn: true,
       });
     });
 
     it('should return false on status 400', async () => {
-      fetch.mockResponseOnce(JSON.stringify({}), { status: 400 });
+      fetch.any({ status: 400 });
 
-      let response = await logUserIn({ username: '', password: '' });
+      const response = await logUserIn({ username: '', password: '' });
 
       expect(response.loggedIn).toBeFalsy();
     });
 
     it('should return false on error', async () => {
-      fetch.mockReject();
+      fetch.any({ throws: new Error('fake err') });
 
-      let response = await logUserIn({ username: '', password: '' });
+      const response = await logUserIn({ username: '', password: '' });
 
       expect(response.loggedIn).toBeFalsy();
     });

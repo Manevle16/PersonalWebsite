@@ -4,11 +4,11 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './src/index.jsx'
+    main: './src/index.jsx',
   },
   output: {
     filename: '[name].[hash].js',
-    path: path.resolve('./dist')
+    path: path.resolve('./dist'),
   },
   stats: {
     colors: true,
@@ -18,7 +18,7 @@ module.exports = {
     version: false,
     timings: false,
     assets: false,
-    chunks: false
+    chunks: false,
   },
 
   module: {
@@ -29,10 +29,10 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/react']
-            }
-          }
-        ]
+              presets: ['@babel/react'],
+            },
+          },
+        ],
       },
       {
         test: /\.s[ac]ss$/,
@@ -42,22 +42,22 @@ module.exports = {
           // Translates CSS into CommonJS
           'css-loader',
           // Compiles Sass to CSS
-          'sass-loader'
-        ]
+          'sass-loader',
+        ],
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
-    ]
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: 'index.html'
+      template: 'index.html',
     }),
-    new CleanWebpackPlugin()
-  ]
+    new CleanWebpackPlugin(),
+  ],
 };

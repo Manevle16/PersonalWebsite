@@ -1,7 +1,6 @@
 import { CLOSE_ERROR } from './actionTypes/commonActionTypes';
 
-export const closeError = () => {
-  return {
-    type: CLOSE_ERROR
-  };
-};
+// eslint-disable-next-line import/prefer-default-export
+export const closeError = () => ({
+  type: CLOSE_ERROR,
+});

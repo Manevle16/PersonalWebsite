@@ -1,5 +1,9 @@
-import { CHECK_IF_LOGGED_IN, SIGN_UP_USER, LOG_IN_USER } from './actionTypes/accountDropdownActionTypes';
-import { checkIfLoggedIn, signUpUser, logInUser } from './accountDropdownActions';
+import {
+  CHECK_IF_LOGGED_IN,
+  SIGN_UP_USER,
+  LOG_IN_USER,
+} from './actionTypes/accountDropdownActionTypes';
+import { checkIfLoggedIn, signUpUser, loginUser } from './accountDropdownActions';
 
 describe('accountDropdownActions', () => {
   it('Should correctly execute `checkIfLoggedIn`', () => {
@@ -8,7 +12,7 @@ describe('accountDropdownActions', () => {
     const result = checkIfLoggedIn(userId, token);
     expect(result).toEqual({
       type: CHECK_IF_LOGGED_IN,
-      payload: { userId, token }
+      payload: { userId, token },
     });
   });
 
@@ -19,17 +23,17 @@ describe('accountDropdownActions', () => {
     const result = signUpUser({ email, username, password });
     expect(result).toEqual({
       type: SIGN_UP_USER,
-      payload: { email, username, password }
+      payload: { email, username, password },
     });
   });
 
-  it('Should correctly execute `logInUser`', () => {
+  it('Should correctly execute `loginUser`', () => {
     const username = 'mockUser';
     const password = 'mockPass';
-    const result = logInUser(username, password);
+    const result = loginUser(username, password);
     expect(result).toEqual({
       type: LOG_IN_USER,
-      payload: { username, password }
+      payload: { username, password },
     });
   });
 });

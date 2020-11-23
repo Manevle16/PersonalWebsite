@@ -10,7 +10,7 @@ describe('topMenuBarReducer', () => {
   it('should return correct payload on switching tab', () => {
     const result = topMenuBarReducer(null, {
       type: SWITCH_TAB_ABOUT,
-      payload: 'mock'
+      payload: 'mock',
     });
     expect(result).toEqual({ currentTab: 'mock' });
   });

@@ -1,20 +1,21 @@
 import { expectSaga } from 'redux-saga-test-plan';
 import { throwError } from 'redux-saga-test-plan/providers';
-import { checkIfLoggedIn, signUserUp, logInUser } from './accountDropdownSaga';
 import * as matchers from 'redux-saga-test-plan/matchers';
+import { checkIfLoggedIn, signUserUp, loginUser } from './accountDropdownSaga';
 import { checkIfUserIsLoggedIn, createUser, logUserIn } from '../apis/accountDropdownApi';
 import {
   IS_LOGGED_IN,
   IS_NOT_LOGGED_IN,
+  LOG_IN_FAILURE,
   SIGN_UP_SUCCESS,
-  SIGN_UP_FAILURE
+  SIGN_UP_FAILURE,
 } from '../actions/actionTypes/accountDropdownActionTypes';
 
 describe('accountDropdownSaga', () => {
   describe('checkIfLoggedIn', () => {
     it('should dispatch `IS_LOGGED_IN` on true', () => {
       return expectSaga(checkIfLoggedIn, {
-        payload: { userId: 'userId', token: 'token' }
+        payload: { userId: 'userId', token: 'token' },
       })
         .provide([[matchers.call.fn(checkIfUserIsLoggedIn), true]])
         .put({ type: IS_LOGGED_IN })
@@ -23,7 +24,7 @@ describe('accountDropdownSaga', () => {
 
     it('should dispatch `IS_NOT_LOGGED_IN` on false', () => {
       return expectSaga(checkIfLoggedIn, {
-        payload: { userId: 'userId', token: 'token' }
+        payload: { userId: 'userId', token: 'token' },
       })
         .provide([[matchers.call.fn(checkIfUserIsLoggedIn), false]])
         .put({ type: IS_NOT_LOGGED_IN })
@@ -32,7 +33,7 @@ describe('accountDropdownSaga', () => {
 
     it('should dispatch `IS_NOT_LOGGED_IN` on error', () => {
       return expectSaga(checkIfLoggedIn, {
-        payload: { userId: 'userId', token: 'token' }
+        payload: { userId: 'userId', token: 'token' },
       })
         .provide([[matchers.call.fn(checkIfUserIsLoggedIn), throwError()]])
         .put({ type: IS_NOT_LOGGED_IN })
@@ -46,10 +47,15 @@ describe('accountDropdownSaga', () => {
         payload: {
           email: '',
           username: '',
-          password: ''
-        }
+          password: '',
+        },
       })
-        .provide([[matchers.call.fn(createUser), { signedUp: true, token: 'mockToken', userId: 'mockUser' }]])
+        .provide([
+          [
+            matchers.call.fn(createUser),
+            { signedUp: true, token: 'mockToken', userId: 'mockUser' },
+          ],
+        ])
         .put({ type: SIGN_UP_SUCCESS })
         .run();
     });
@@ -59,8 +65,8 @@ describe('accountDropdownSaga', () => {
         payload: {
           email: '',
           username: '',
-          password: ''
-        }
+          password: '',
+        },
       })
         .provide([[matchers.call.fn(createUser), { signedUp: false }]])
         .put({ type: SIGN_UP_FAILURE })
@@ -72,8 +78,8 @@ describe('accountDropdownSaga', () => {
         payload: {
           email: '',
           username: '',
-          password: ''
-        }
+          password: '',
+        },
       })
         .provide([[matchers.call.fn(createUser), throwError()]])
         .put({ type: SIGN_UP_FAILURE })
@@ -83,11 +89,11 @@ describe('accountDropdownSaga', () => {
 
   describe('logInUser', () => {
     it('should dispatch `IS_LOGGED_IN` on true', () => {
-      return expectSaga(logInUser, {
+      return expectSaga(loginUser, {
         payload: {
           username: '',
-          password: ''
-        }
+          password: '',
+        },
       })
         .provide([[matchers.call.fn(logUserIn), { loggedIn: true, token: '', userId: '' }]])
         .put({ type: IS_LOGGED_IN })
@@ -95,11 +101,11 @@ describe('accountDropdownSaga', () => {
     });
 
     it('should dispatch `IS_NOT_LOGGED_IN` on false', () => {
-      return expectSaga(logInUser, {
+      return expectSaga(loginUser, {
         payload: {
           username: '',
-          password: ''
-        }
+          password: '',
+        },
       })
         .provide([[matchers.call.fn(logUserIn), { loggedIn: false }]])
         .put({ type: IS_NOT_LOGGED_IN })
@@ -107,14 +113,14 @@ describe('accountDropdownSaga', () => {
     });
 
     it('should dispatch `IS_NOT_LOGGED_IN` on error', () => {
-      return expectSaga(logInUser, {
+      return expectSaga(loginUser, {
         payload: {
           username: '',
-          password: ''
-        }
+          password: '',
+        },
       })
         .provide([[matchers.call.fn(logUserIn), throwError()]])
-        .put({ type: IS_NOT_LOGGED_IN })
+        .put({ type: LOG_IN_FAILURE })
         .run();
     });
   });

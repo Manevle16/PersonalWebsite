@@ -1,9 +1,14 @@
-import { switchTabHome, switchTabAbout, switchTabProject, switchTabBlog } from './topMenuBarActions';
+import {
+  switchTabHome,
+  switchTabAbout,
+  switchTabProject,
+  switchTabBlog,
+} from './topMenuBarActions';
 import {
   SWITCH_TAB_HOME,
   SWITCH_TAB_ABOUT,
   SWITCH_TAB_PROJECT,
-  SWITCH_TAB_BLOG
+  SWITCH_TAB_BLOG,
 } from './actionTypes/topMenuBarActionTypes';
 
 describe('topMenuBarActions', () => {
@@ -16,7 +21,7 @@ describe('topMenuBarActions', () => {
     const result = switchTabAbout();
     expect(result).toEqual({
       type: SWITCH_TAB_ABOUT,
-      payload: 'about'
+      payload: 'about',
     });
   });
 
@@ -24,7 +29,7 @@ describe('topMenuBarActions', () => {
     const result = switchTabProject();
     expect(result).toEqual({
       type: SWITCH_TAB_PROJECT,
-      payload: 'projects'
+      payload: 'projects',
     });
   });
 
@@ -32,7 +37,7 @@ describe('topMenuBarActions', () => {
     const result = switchTabBlog();
     expect(result).toEqual({
       type: SWITCH_TAB_BLOG,
-      payload: 'blog'
+      payload: 'blog',
     });
   });
 });
