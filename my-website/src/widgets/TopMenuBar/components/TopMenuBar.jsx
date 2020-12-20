@@ -21,6 +21,7 @@ class TopMenuBar extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', this.resize);
     const { currentPath } = this.props;
+
     this.switchTabs(currentPath);
   }
 
