@@ -22,12 +22,7 @@ class TopMenuBar extends React.Component {
     window.addEventListener('resize', this.resize);
     const { currentPath } = this.props;
 
-    const init = setInterval(() => {
-      this.switchTabs(currentPath);
-    }, 100);
-    setTimeout(() => {
-      clearInterval(init);
-    }, 1000);
+    this.switchTabs(currentPath);
   }
 
   componentWillUnmount() {

@@ -24,22 +24,26 @@
         margin-bottom: 0;
       }
     }
+    .nav-item {
+      width: 90px;
 
-    .nav-link {
-      border: 0;
-      padding: 0 size('md');
-      text-decoration: none;
-      color: black;
-
-      &.active {
+      .nav-link {
         border: 0;
-        margin-bottom: 3px;
-        padding-bottom: 1rem;
-        color: white;
-        background: inherit;
-      }
-      &:focus {
-        outline: none;
+        padding: 0 size('md');
+        text-decoration: none;
+        text-align: center;
+        color: black;
+
+        &.active {
+          border: 0;
+          margin-bottom: 3px;
+          padding-bottom: 1rem;
+          color: white;
+          background: inherit;
+        }
+        &:focus {
+          outline: none;
+        }
       }
     }
     .account-dropdown {
